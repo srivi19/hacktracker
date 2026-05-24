@@ -46,7 +46,7 @@ export default function DashboardPage() {
       return true;
     }).sort((a, b) => {
       // Closing soon first, then open, then upcoming
-      const order = { closing_soon: 0, open: 1, upcoming: 2, closed: 3 };
+      const order: Record<string, number> = { closing_soon: 0, open: 1, upcoming: 2, closed: 3 };
       return (order[a.status] ?? 3) - (order[b.status] ?? 3);
     });
   }, [filters]);
