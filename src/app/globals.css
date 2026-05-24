@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #16a34a;
+  --accent-light: #22c55e;
+  --navy: #0f172a;
+  --surface: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--navy);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Dot grid background — matches Market Gap AI */
+.dot-grid-bg {
+  background-color: #f8fafc;
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Gradient overlay on hero */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(240, 253, 244, 0.6) 0%,
+    rgba(248, 250, 252, 0.3) 50%,
+    rgba(240, 249, 255, 0.6) 100%
+  );
+}
+
+/* Chip / tag style */
+.chip {
+  @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium border border-slate-200 bg-white text-slate-700;
+}
+
+.chip-green {
+  @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium border border-green-200 bg-green-50 text-green-700;
+}
+
+/* Card hover */
+.hack-card {
+  @apply bg-white border border-slate-200 rounded-xl p-5 transition-all duration-200;
+}
+.hack-card:hover {
+  @apply border-green-300 shadow-md shadow-green-50;
+  transform: translateY(-2px);
+}
+
+/* Status badge */
+.status-open {
+  @apply bg-green-50 text-green-700 border border-green-200;
+}
+.status-closing_soon {
+  @apply bg-orange-50 text-orange-700 border border-orange-200;
+}
+.status-upcoming {
+  @apply bg-blue-50 text-blue-700 border border-blue-200;
+}
+.status-closed {
+  @apply bg-slate-50 text-slate-500 border border-slate-200;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Countdown urgency */
+.urgency-high { @apply text-red-600 font-semibold; }
+.urgency-med { @apply text-orange-600 font-semibold; }
+.urgency-low { @apply text-green-600; }
