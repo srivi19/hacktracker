@@ -170,6 +170,7 @@ export const WINNER_PROJECTS: WinnerProject[] = [
     prize_won: "1st Place — $10,000",
     tech_stack: ["React", "Python", "Gemini", "ChromaDB", "FastAPI"],
     description: "AI that reads your entire document library and answers questions across all files simultaneously.",
+    url: "https://devpost.com/software/documind-rag",
     insight: "RAG over enterprise docs — simple concept, flawless execution. Chrome extension = 10x more demos.",
   },
   {
@@ -180,6 +181,7 @@ export const WINNER_PROJECTS: WinnerProject[] = [
     prize_won: "1st Place — $3,000",
     tech_stack: ["Chrome Extension", "OpenAI", "React", "Supabase"],
     description: "One-click AI replies for Gmail that match your writing tone and context.",
+    url: "https://devpost.com/software/replyflow",
     insight: "Chrome Extension + AI combo wins micro-SaaS brackets almost every time. Zero-friction UX is king.",
   },
   {
@@ -190,16 +192,18 @@ export const WINNER_PROJECTS: WinnerProject[] = [
     prize_won: "1st Place — $25,000",
     tech_stack: ["React Native", "TensorFlow", "Python", "Firebase"],
     description: "Mobile app that triages patient symptoms with 94% accuracy using on-device ML.",
+    url: "https://devpost.com/software/symptomscan",
     insight: "Healthcare AI winners always solve the last mile — easy data input + clear output for non-technical users.",
   },
   {
     id: "w5",
-    hackathon_title: "Devpost Hackathon 2025",
+    hackathon_title: "Hack Devpost 2025",
     hackathon_year: 2025,
     project_name: "HackMentor",
     prize_won: "2nd Place — $5,000",
     tech_stack: ["Next.js", "OpenAI", "Supabase", "Vercel"],
     description: "AI coach that reviews your hackathon project and tells you exactly what judges want to see.",
+    url: "https://devpost.com/software/hackmentor",
     insight: "Meta-hackathon tools (tools for hackers) punch above their weight with judges who get the irony.",
   },
   {
@@ -210,6 +214,7 @@ export const WINNER_PROJECTS: WinnerProject[] = [
     prize_won: "1st Place — $15,000",
     tech_stack: ["Solidity", "Python", "GPT-4", "Hardhat", "React"],
     description: "AI that audits Solidity smart contracts and generates plain-English security reports in 30 seconds.",
+    url: "https://devpost.com/software/chainaudit",
     insight: "Web3 + AI safety is the hottest combo right now — anything that reduces audit costs wins big.",
   },
 ];

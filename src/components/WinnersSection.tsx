@@ -49,16 +49,14 @@ export default function WinnersSection() {
             </div>
 
             {/* Link */}
-            {w.url && (
-              <a
-                href={w.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-[11px] text-accent font-semibold hover:underline"
-              >
-                View project <ExternalLink size={10} />
-              </a>
-            )}
+            <a
+              href={w.url ?? `https://devpost.com/software/${w.project_name.toLowerCase().replace(/\s+/g, "-")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-[11px] text-accent font-semibold hover:underline"
+            >
+              View project <ExternalLink size={10} />
+            </a>
           </div>
         ))}
       </div>
