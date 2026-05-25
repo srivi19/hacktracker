@@ -51,20 +51,25 @@ export async function GET(request: Request) {
     const scrapeResult = await scrapeAllSources(existingIds);
     console.log(`Scraped ${scrapeResult.total} total from ${Object.keys(scrapeResult.sources).length} sources`);
 
-    // Gemini summarize only NEW hackathons (not already in DB)
+    // Gemini summarize: new hackathons OR existing ones with a poor/missing summary
+    const needsSummary = (h: (typeof scrapeResult.hackathons)[0]) => {
+      if (!h.title) return false;
+      const s = (h.summary ?? "").trim();
+      return !s || s === h.title || s === `${h.title}...` || s.length < 20;
+    };
+
     const withSummaries = await Promise.all(
       scrapeResult.hackathons.map(async (h) => {
-        const isNew = !existingIds.has(h.id ?? "");
-        if (isNew && h.title && h.description) {
+        if (needsSummary(h) && h.description) {
           try {
             h.summary = await summarizeHackathon(
-              h.title,
+              h.title ?? "",
               h.description,
               h.prize_pool ?? "TBD",
               h.deadline ?? ""
             );
           } catch {
-            h.summary = h.description?.slice(0, 100) ?? h.title;
+            h.summary = h.description?.slice(0, 120) ?? h.title;
           }
         }
         return h;

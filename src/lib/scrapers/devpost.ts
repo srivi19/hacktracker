@@ -24,10 +24,19 @@ function mapStatus(openState: string, timeLeft: string): HackathonStatus {
   return "open";
 }
 
+function stripHtml(str: string): string {
+  return str.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+}
+
 function parsePrize(amount: string | number | null): string {
   if (!amount) return "TBD";
-  if (typeof amount === "number") return amount >= 1000 ? `$${(amount / 1000).toFixed(0)}K` : `$${amount}`;
-  return String(amount);
+  if (typeof amount === "number") {
+    if (amount === 0) return "TBD";
+    return amount >= 1000 ? `$${(amount / 1000).toFixed(0)}K` : `$${amount}`;
+  }
+  const cleaned = stripHtml(String(amount));
+  if (!cleaned || cleaned === "$0" || cleaned === "0") return "TBD";
+  return cleaned;
 }
 
 function parseDeadline(dates: string): string {
@@ -69,8 +78,15 @@ export async function scrapeDevpost(): Promise<Partial<Hackathon & { devpost_id:
     team_size: "1–5",
     difficulty: "All levels" as const,
     location: h.display_location || "Global · Virtual",
-    summary: h.tagline ?? h.title,
-    description: h.tagline ?? h.title,
+    summary: h.tagline ?? "",
+    description: [
+      h.tagline,
+      h.themes?.length ? `Themes: ${h.themes.map((t) => t.name).join(", ")}` : null,
+      h.display_location ? `Location: ${h.display_location}` : null,
+      h.submission_period_dates ? `Dates: ${h.submission_period_dates}` : null,
+      h.prize_amount ? `Prize: ${parsePrize(h.prize_amount)}` : null,
+      h.submissions_count ? `${h.submissions_count} submissions` : null,
+    ].filter(Boolean).join(". ") || h.title,
     status: mapStatus(h.open_state, h.time_left_to_submission),
     category: h.themes?.[0]?.name ?? "General",
     participants: h.submissions_count ?? 0,
