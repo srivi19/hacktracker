@@ -6,6 +6,7 @@ import HackathonCard from "@/components/HackathonCard";
 import SearchFilters from "@/components/SearchFilters";
 import WinnersSection from "@/components/WinnersSection";
 import NovusCarousel from "@/components/NovusCarousel";
+import CalendarView from "@/components/CalendarView";
 import { HACKATHONS, AI_INSIGHTS } from "@/lib/data";
 import type { FilterState, Hackathon } from "@/types";
 import { Calendar, LayoutGrid, List, Zap, RefreshCw, Database } from "lucide-react";
@@ -23,7 +24,8 @@ const DEFAULT_FILTERS: FilterState = {
 
 export default function DashboardPage() {
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
-  const [view, setView] = useState<"grid" | "list">("grid");
+  const [view, setView] = useState<"grid" | "list" | "calendar">("grid");
+  const [selectedHackathon, setSelectedHackathon] = useState<Hackathon | null>(null);
   const [tab, setTab] = useState<"hackathons" | "winners" | "insights" | "analytics">("hackathons");
 
   // Live data state
@@ -221,14 +223,23 @@ export default function DashboardPage() {
               <button
                 onClick={() => setView("grid")}
                 className={`p-1.5 rounded ${view === "grid" ? "bg-green-50 text-accent" : "text-slate-400 hover:text-slate-600"}`}
+                title="Grid view"
               >
                 <LayoutGrid size={15} />
               </button>
               <button
                 onClick={() => setView("list")}
                 className={`p-1.5 rounded ${view === "list" ? "bg-green-50 text-accent" : "text-slate-400 hover:text-slate-600"}`}
+                title="List view"
               >
                 <List size={15} />
+              </button>
+              <button
+                onClick={() => setView("calendar")}
+                className={`p-1.5 rounded ${view === "calendar" ? "bg-green-50 text-accent" : "text-slate-400 hover:text-slate-600"}`}
+                title="Calendar view"
+              >
+                <Calendar size={15} />
               </button>
             </div>
 
@@ -243,6 +254,50 @@ export default function DashboardPage() {
                 <p className="font-semibold text-slate-600">No hackathons match your filters</p>
                 <p className="text-sm mt-1">Try clearing some filters or refreshing live data</p>
               </div>
+            ) : view === "calendar" ? (
+              <>
+                <CalendarView hackathons={filtered} onSelectEvent={setSelectedHackathon} />
+                {selectedHackathon && (
+                  <div className="mt-6 bg-white border border-slate-200 rounded-lg p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-lg font-bold text-navy">{selectedHackathon.title}</h3>
+                        <p className="text-sm text-slate-500 mt-1">{selectedHackathon.organizer}</p>
+                      </div>
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide status-${selectedHackathon.status}`}>
+                        {selectedHackathon.status === "closing_soon" ? "Closing Soon" : selectedHackathon.status}
+                      </span>
+                    </div>
+                    <p className="text-sm text-slate-600 mb-4">{selectedHackathon.summary}</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+                      <div>
+                        <p className="font-bold text-slate-400 uppercase">Prize</p>
+                        <p className="text-navy font-bold">{selectedHackathon.prize_pool}</p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-slate-400 uppercase">Deadline</p>
+                        <p className="text-navy font-bold">{new Date(selectedHackathon.deadline).toLocaleDateString()}</p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-slate-400 uppercase">Team Size</p>
+                        <p className="text-navy font-bold">{selectedHackathon.team_size}</p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-slate-400 uppercase">Location</p>
+                        <p className="text-navy font-bold">{selectedHackathon.location}</p>
+                      </div>
+                    </div>
+                    <a
+                      href={selectedHackathon.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-4 px-4 py-2 bg-accent text-white font-bold text-sm rounded-lg hover:bg-accent-dark transition-colors"
+                    >
+                      View on Devpost →
+                    </a>
+                  </div>
+                )}
+              </>
             ) : (
               <div
                 className={

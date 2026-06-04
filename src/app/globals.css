@@ -78,3 +78,102 @@ body {
 .urgency-high { @apply text-red-600 font-semibold; }
 .urgency-med { @apply text-orange-600 font-semibold; }
 .urgency-low { @apply text-green-600; }
+
+/* React Big Calendar Styling */
+.rbc-calendar {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.rbc-header {
+  padding: 12px 4px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #0f172a;
+  border-bottom: 2px solid #e2e8f0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rbc-today {
+  background-color: #f0fdf4;
+}
+
+.rbc-off-range-bg {
+  background-color: #f8fafc;
+}
+
+.rbc-event {
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+}
+
+.rbc-event-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rbc-day-bg,
+.rbc-time-slot {
+  border-color: #e2e8f0;
+}
+
+.rbc-toolbar {
+  margin-bottom: 20px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rbc-toolbar button {
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 12px;
+  border: 1px solid #cbd5e1;
+  background-color: white;
+  color: #0f172a;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rbc-toolbar button:hover {
+  border-color: #16a34a;
+  color: #16a34a;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: #16a34a;
+  color: white;
+  border-color: #16a34a;
+}
+
+.rbc-month-view,
+.rbc-time-view {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rbc-date-cell {
+  padding: 4px;
+  text-align: right;
+  font-size: 13px;
+}
+
+.rbc-date-cell > a {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.rbc-date-cell.rbc-off-range > a {
+  color: #cbd5e1;
+}
