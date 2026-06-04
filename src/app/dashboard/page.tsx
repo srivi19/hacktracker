@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useEffect, useCallback } from "react";
+import { useState, useMemo, useEffect, useCallback, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HackathonCard from "@/components/HackathonCard";
@@ -8,6 +8,14 @@ import WinnersSection from "@/components/WinnersSection";
 import { HACKATHONS, AI_INSIGHTS } from "@/lib/data";
 import type { FilterState, Hackathon } from "@/types";
 import { Calendar, LayoutGrid, List, Zap, RefreshCw, Database } from "lucide-react";
+
+declare global {
+  interface Window {
+    pendo?: {
+      track: (eventName: string, properties?: Record<string, unknown>) => void;
+    };
+  }
+}
 
 const DEFAULT_FILTERS: FilterState = {
   search: "",
@@ -33,15 +41,29 @@ export default function DashboardPage() {
   // Fetch hackathons from API (Supabase or static fallback)
   const fetchHackathons = useCallback(async () => {
     setLoading(true);
+    const startTime = Date.now();
     try {
       const res = await fetch("/api/hackathons");
       const data = await res.json();
       if (data.hackathons?.length > 0) {
         setHackathons(data.hackathons);
         setDataSource(data.source === "static" ? "static" : "live");
+
+        window.pendo?.track("hackathon_data_loaded", {
+          data_source: data.source === "static" ? "static" : "live",
+          hackathon_count: data.hackathons.length,
+          load_success: true,
+          response_time_ms: Date.now() - startTime,
+        });
       }
     } catch {
-      // Keep static data on error
+      loadSuccess = false;
+      window.pendo?.track("hackathon_data_loaded", {
+        data_source: "static",
+        hackathon_count: 0,
+        load_success: false,
+        response_time_ms: Date.now() - startTime,
+      });
     } finally {
       setLoading(false);
     }
@@ -61,6 +83,7 @@ export default function DashboardPage() {
   // Trigger live scrape from Devpost
   const triggerScrape = async (force = false) => {
     setScraping(true);
+    const startTime = Date.now();
     try {
       const res = await fetch(`/api/scrape${force ? "?force=true" : ""}`);
       const data = await res.json();
@@ -69,7 +92,25 @@ export default function DashboardPage() {
         setDataSource("live");
         setLastScraped(new Date().toISOString());
       }
-    } catch {
+
+      window.pendo?.track("live_data_scrape_completed", {
+        scrape_forced: force,
+        total_hackathons_returned: data.hackathons?.length ?? 0,
+        devpost_count: data.devpost_count ?? 0,
+        mlh_count: data.mlh_count ?? 0,
+        new_summaries_generated: data.new_summaries ?? 0,
+        data_source: "live",
+        scrape_success: true,
+        scrape_duration_ms: Date.now() - startTime,
+      });
+    } catch (err) {
+      window.pendo?.track("live_data_scrape_completed", {
+        scrape_forced: force,
+        total_hackathons_returned: 0,
+        scrape_success: false,
+        scrape_duration_ms: Date.now() - startTime,
+        error_message: String(err).substring(0, 100),
+      });
       alert("Scrape failed — Devpost may be temporarily unavailable. Try again in a moment.");
     } finally {
       setScraping(false);
@@ -107,6 +148,56 @@ export default function DashboardPage() {
       return (order[a.status] ?? 3) - (order[b.status] ?? 3);
     });
   }, [filters, hackathons]);
+
+  // Track search queries (debounced)
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (!filters.search) return;
+    const timer = setTimeout(() => {
+      window.pendo?.track("hackathon_search_executed", {
+        search_query: filters.search.substring(0, 100),
+        results_count: filtered.length,
+        total_hackathons: hackathons.length,
+        category_filter: filters.category,
+        status_filter: filters.status,
+        difficulty_filter: filters.difficulty,
+        tech_tag_filter: filters.techTag || "none",
+      });
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [filters.search]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Track filter changes (debounced)
+  const isFilterInitial = useRef(true);
+  useEffect(() => {
+    if (isFilterInitial.current) {
+      isFilterInitial.current = false;
+      return;
+    }
+    const timer = setTimeout(() => {
+      const activeCount =
+        (filters.category !== "All" ? 1 : 0) +
+        (filters.difficulty !== "All" ? 1 : 0) +
+        (filters.status !== "All" ? 1 : 0) +
+        (filters.techTag ? 1 : 0);
+      if (activeCount === 0) return;
+      window.pendo?.track("hackathon_filters_applied", {
+        category_filter: filters.category,
+        difficulty_filter: filters.difficulty,
+        status_filter: filters.status,
+        tech_tag_filter: filters.techTag || "none",
+        has_search_query: Boolean(filters.search),
+        results_count: filtered.length,
+        total_hackathons: hackathons.length,
+        filters_active_count: activeCount,
+      });
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [filters.category, filters.difficulty, filters.status, filters.techTag]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function formatLastScraped(ts: string | null): string {
     if (!ts) return "Never";
