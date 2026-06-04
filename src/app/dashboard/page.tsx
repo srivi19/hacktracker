@@ -218,29 +218,44 @@ export default function DashboardPage() {
               total={hackathons.length}
             />
 
-            {/* View toggle */}
-            <div className="flex items-center justify-end gap-2 mb-4">
-              <button
-                onClick={() => setView("grid")}
-                className={`p-1.5 rounded ${view === "grid" ? "bg-green-50 text-accent" : "text-slate-400 hover:text-slate-600"}`}
-                title="Grid view"
-              >
-                <LayoutGrid size={15} />
-              </button>
-              <button
-                onClick={() => setView("list")}
-                className={`p-1.5 rounded ${view === "list" ? "bg-green-50 text-accent" : "text-slate-400 hover:text-slate-600"}`}
-                title="List view"
-              >
-                <List size={15} />
-              </button>
-              <button
-                onClick={() => setView("calendar")}
-                className={`p-1.5 rounded ${view === "calendar" ? "bg-green-50 text-accent" : "text-slate-400 hover:text-slate-600"}`}
-                title="Calendar view"
-              >
-                <Calendar size={15} />
-              </button>
+            {/* View toggle - PROMINENT */}
+            <div className="flex items-center justify-between mb-6 bg-white rounded-lg border border-slate-200 p-3">
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">View</p>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setView("grid")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                    view === "grid"
+                      ? "bg-accent text-white shadow-md"
+                      : "text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
+                  <LayoutGrid size={16} />
+                  Grid
+                </button>
+                <button
+                  onClick={() => setView("list")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                    view === "list"
+                      ? "bg-accent text-white shadow-md"
+                      : "text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
+                  <List size={16} />
+                  List
+                </button>
+                <button
+                  onClick={() => setView("calendar")}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                    view === "calendar"
+                      ? "bg-accent text-white shadow-md"
+                      : "text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
+                  <Calendar size={16} />
+                  📅 Calendar
+                </button>
+              </div>
             </div>
 
             {loading ? (
