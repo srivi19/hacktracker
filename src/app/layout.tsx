@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,6 +20,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Novus.ai analytics tracking */}
+        <Script id="novus-config" strategy="beforeInteractive">
+          {`window.novusConfig = { appId: "17eb64f6-abe5-499b-bf3d-0bb31a5ede74" };`}
+        </Script>
+        <Script
+          src="https://novus.pendio.io/sdk/web.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );
