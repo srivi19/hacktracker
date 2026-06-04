@@ -296,11 +296,7 @@ export default function DashboardPage() {
         )}
 
         {/* Analytics tab */}
-        {tab === "analytics" && (
-          <div className="max-w-5xl mx-auto">
-            <NovusCarousel screenshots={["/novus-1-pages.png", "/novus-2-events.png", "/novus-3-funnels.png"]} />
-          </div>
-        )}
+        {tab === "analytics" && <NovusCarousel screenshots={["/novus-1-pages.png", "/novus-2-events.png", "/novus-3-funnels.png"]} />}
       </main>
 
       <Footer />
