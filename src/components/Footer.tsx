@@ -58,10 +58,16 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-slate-100 py-2 text-center">
+      <div className="border-t border-slate-100 py-3 text-center">
         <p className="text-[10px] text-slate-400">
           Built with Next.js · Gemini AI · Supabase · Deployed on Vercel
         </p>
+        <div className="flex items-center justify-center gap-2 mt-2">
+          <span className="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">📊 Tracked by</span>
+          <span className="inline-block px-2 py-1 bg-blue-50 border border-blue-200 rounded text-[10px] font-bold text-blue-700">
+            NOVUS.AI
+          </span>
+        </div>
       </div>
     </footer>
   );

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import HackathonCard from "@/components/HackathonCard";
 import SearchFilters from "@/components/SearchFilters";
 import WinnersSection from "@/components/WinnersSection";
+import NovusCarousel from "@/components/NovusCarousel";
 import { HACKATHONS, AI_INSIGHTS } from "@/lib/data";
 import type { FilterState, Hackathon } from "@/types";
 import { Calendar, LayoutGrid, List, Zap, RefreshCw, Database } from "lucide-react";
@@ -16,6 +17,8 @@ const DEFAULT_FILTERS: FilterState = {
   prizeMin: 0,
   status: "All",
   techTag: "",
+  teamSize: "all",
+  format: "all",
 };
 
 export default function DashboardPage() {
@@ -101,6 +104,22 @@ export default function DashboardPage() {
       if (filters.difficulty !== "All" && h.difficulty !== filters.difficulty) return false;
       if (filters.status !== "All" && h.status !== filters.status) return false;
       if (filters.techTag && !h.tech_tags?.includes(filters.techTag)) return false;
+
+      // Team size filter
+      if (filters.teamSize === "solo" && !h.team_size.toLowerCase().includes("1")) return false;
+      if (filters.teamSize === "team" && h.team_size.toLowerCase().includes("1")) return false;
+
+      // Format filter (online, in-person, hybrid)
+      if (filters.format !== "all") {
+        const isOnline = h.location.toLowerCase().includes("virtual") || h.location.toLowerCase().includes("online");
+        const isInPerson = h.location.toLowerCase().includes("in-person") || h.location.toLowerCase().includes("san francisco") || h.location.toLowerCase().includes("person");
+        const isHybrid = (isOnline && isInPerson) || h.location.includes("+");
+
+        if (filters.format === "online" && !isOnline) return false;
+        if (filters.format === "in-person" && !isInPerson) return false;
+        if (filters.format === "hybrid" && !isHybrid) return false;
+      }
+
       return true;
     }).sort((a, b) => {
       const order: Record<string, number> = { closing_soon: 0, open: 1, upcoming: 2, closed: 3 };
@@ -162,6 +181,9 @@ export default function DashboardPage() {
             </div>
           </div>
         )}
+
+        {/* Novus Analytics Carousel */}
+        <NovusCarousel screenshots={["/Screenshot 1.png", "/Screenshot 2.png", "/Screenshot 3.png"]} />
 
         {/* Tabs */}
         <div className="flex items-center gap-1 mb-6 border-b border-slate-200">
