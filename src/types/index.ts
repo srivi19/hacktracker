@@ -39,4 +39,6 @@ export interface FilterState {
   prizeMin: number;
   status: string;
   techTag: string;
+  teamSize: string; // "solo" | "team" | "all"
+  format: string; // "online" | "in-person" | "hybrid" | "all"
 }

@@ -12,6 +12,8 @@ interface Props {
 
 const DIFFICULTIES = ["All", "Beginner", "Intermediate", "Advanced", "All levels"];
 const STATUSES = ["All", "open", "closing_soon", "upcoming", "closed"];
+const TEAM_SIZES = ["All", "solo", "team"];
+const FORMATS = ["All", "online", "in-person", "hybrid"];
 
 export default function SearchFilters({ filters, onChange, count, total }: Props) {
   const hasActive =
@@ -19,10 +21,12 @@ export default function SearchFilters({ filters, onChange, count, total }: Props
     filters.category !== "All" ||
     filters.difficulty !== "All" ||
     filters.status !== "All" ||
-    filters.techTag;
+    filters.techTag ||
+    filters.teamSize !== "all" ||
+    filters.format !== "all";
 
   function reset() {
-    onChange({ search: "", category: "All", difficulty: "All", status: "All", techTag: "" });
+    onChange({ search: "", category: "All", difficulty: "All", status: "All", techTag: "", teamSize: "all", format: "all" });
   }
 
   return (
@@ -43,9 +47,9 @@ export default function SearchFilters({ filters, onChange, count, total }: Props
         )}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
         {/* Search */}
-        <div className="relative lg:col-span-1">
+        <div className="relative lg:col-span-2">
           <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
@@ -67,6 +71,17 @@ export default function SearchFilters({ filters, onChange, count, total }: Props
           ))}
         </select>
 
+        {/* Difficulty */}
+        <select
+          value={filters.difficulty}
+          onChange={(e) => onChange({ difficulty: e.target.value })}
+          className="text-xs border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-green-400 bg-slate-50 text-slate-700"
+        >
+          {DIFFICULTIES.map((d) => (
+            <option key={d}>{d}</option>
+          ))}
+        </select>
+
         {/* Status */}
         <select
           value={filters.status}
@@ -80,14 +95,29 @@ export default function SearchFilters({ filters, onChange, count, total }: Props
           ))}
         </select>
 
-        {/* Difficulty */}
+        {/* Team Size */}
         <select
-          value={filters.difficulty}
-          onChange={(e) => onChange({ difficulty: e.target.value })}
+          value={filters.teamSize || "all"}
+          onChange={(e) => onChange({ teamSize: e.target.value })}
           className="text-xs border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-green-400 bg-slate-50 text-slate-700"
         >
-          {DIFFICULTIES.map((d) => (
-            <option key={d}>{d}</option>
+          {TEAM_SIZES.map((t) => (
+            <option key={t} value={t.toLowerCase()}>
+              {t === "All" ? "Team Size" : t === "solo" ? "Solo" : "With Team"}
+            </option>
+          ))}
+        </select>
+
+        {/* Format */}
+        <select
+          value={filters.format || "all"}
+          onChange={(e) => onChange({ format: e.target.value })}
+          className="text-xs border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-green-400 bg-slate-50 text-slate-700"
+        >
+          {FORMATS.map((f) => (
+            <option key={f} value={f.toLowerCase()}>
+              {f === "All" ? "Format" : f === "in-person" ? "In-Person" : f === "hybrid" ? "Online + In-Person" : "Online"}
+            </option>
           ))}
         </select>
       </div>
