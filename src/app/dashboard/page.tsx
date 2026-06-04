@@ -301,7 +301,6 @@ export default function DashboardPage() {
             <NovusCarousel screenshots={["/novus-1-pages.png", "/novus-2-events.png", "/novus-3-funnels.png"]} />
           </div>
         )}
-        )}
       </main>
 
       <Footer />
