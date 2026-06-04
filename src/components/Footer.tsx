@@ -50,7 +50,7 @@ export default function Footer() {
             </div>
             <div>
               <p className="text-xs font-bold text-accent leading-tight">
-                VEE (SRIVIDYA NARAYANAN)
+                VI (SRIVIDYA NARAYANAN)
               </p>
               <p className="text-[10px] text-slate-500">AIHackTracker</p>
             </div>
