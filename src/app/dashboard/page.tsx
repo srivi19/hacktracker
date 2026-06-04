@@ -24,8 +24,7 @@ const DEFAULT_FILTERS: FilterState = {
 export default function DashboardPage() {
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
   const [view, setView] = useState<"grid" | "list">("grid");
-  const [tab, setTab] = useState<"hackathons" | "winners" | "insights">("hackathons");
-  const [showAnalytics, setShowAnalytics] = useState(false);
+  const [tab, setTab] = useState<"hackathons" | "winners" | "insights" | "analytics">("hackathons");
 
   // Live data state
   const [hackathons, setHackathons] = useState<Hackathon[]>(HACKATHONS);
@@ -183,33 +182,9 @@ export default function DashboardPage() {
           </div>
         )}
 
-        {/* Novus Analytics Toggle */}
-        {!showAnalytics && (
-          <button
-            onClick={() => setShowAnalytics(true)}
-            className="mb-6 w-full px-4 py-3 bg-blue-50 hover:bg-blue-100 border-2 border-blue-300 rounded-lg text-blue-700 font-bold text-sm transition-colors flex items-center justify-center gap-2"
-          >
-            <Database size={16} /> 📊 View Novus Analytics
-          </button>
-        )}
-
-        {/* Novus Analytics Carousel */}
-        {showAnalytics && (
-          <div>
-            <button
-              onClick={() => setShowAnalytics(false)}
-              className="mb-4 px-3 py-1 bg-slate-200 hover:bg-slate-300 rounded text-xs font-bold text-slate-700 transition-colors"
-            >
-              ← Back to Hackathons
-            </button>
-            <NovusCarousel screenshots={["/novus-1-pages.png", "/novus-2-events.png", "/novus-3-funnels.png"]} />
-          </div>
-        )}
-
-        {/* Tabs - only show when not viewing analytics */}
-        {!showAnalytics && (
+        {/* Tabs */}
         <div className="flex items-center gap-1 mb-6 border-b border-slate-200">
-          {(["hackathons", "winners", "insights"] as const).map((t) => (
+          {(["hackathons", "winners", "insights", "analytics"] as const).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -226,6 +201,7 @@ export default function DashboardPage() {
               )}
               {t === "winners" && <span className="flex items-center gap-1.5"><span>🏆</span> Winners</span>}
               {t === "insights" && <span className="flex items-center gap-1.5"><Zap size={12} /> AI Insights</span>}
+              {t === "analytics" && <span className="flex items-center gap-1.5"><Database size={12} /> Analytics</span>}
             </button>
           ))}
         </div>
@@ -316,6 +292,13 @@ export default function DashboardPage() {
                 <li>→ Teams of <strong>2–3</strong> outperform solo and 4+ on execution quality</li>
               </ul>
             </div>
+          </div>
+        )}
+
+        {/* Analytics tab */}
+        {tab === "analytics" && (
+          <div className="max-w-5xl mx-auto">
+            <NovusCarousel screenshots={["/novus-1-pages.png", "/novus-2-events.png", "/novus-3-funnels.png"]} />
           </div>
         )}
         )}
