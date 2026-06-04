@@ -156,7 +156,7 @@ export const WINNER_PROJECTS: WinnerProject[] = [
     hackathon_title: "World Wide Vibes Hackathon",
     hackathon_year: 2026,
     project_name: "Market-Gap AI",
-    prize_won: "1st Place — $5,000",
+    prize_won: "3rd Place — $750",
     tech_stack: ["Next.js", "Python", "Bright Data", "OpenAI", "Supabase"],
     description: "AI-powered market intelligence that shows entrepreneurs exactly where to open their next business.",
     url: "https://market-gap-ai-production.up.railway.app/",
