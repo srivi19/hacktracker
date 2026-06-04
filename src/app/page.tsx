@@ -213,33 +213,6 @@ export default function HomePage() {
             ))}
           </div>
         </section>
-
-        {/* About / Builder section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
-          <div className="bg-white border border-slate-200 rounded-2xl p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <div className="w-14 h-14 rounded-full bg-green-600 flex items-center justify-center text-white text-xl font-black flex-shrink-0">
-              VI
-            </div>
-            <div className="flex-1">
-              <p className="text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-1">Builder</p>
-              <h3 className="text-lg font-black text-navy">Vi (Srividya Narayanan)</h3>
-              <p className="text-sm text-slate-500 mt-1 max-w-xl">
-                Serial hackathon builder and AI product creator. Previously built{" "}
-                <a href="https://market-gap-ai-production.up.railway.app/" target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">
-                  Market-Gap AI
-                </a>{" "}
-                (1st place, World Wide Vibes Hackathon 2026). AIHackTracker is my answer to the meta-problem —
-                hackers waste hours finding hackathons. This fixes that.
-              </p>
-            </div>
-            <Link
-              href="/dashboard"
-              className="flex items-center gap-2 px-6 py-2.5 bg-accent text-white font-bold text-sm rounded-lg hover:bg-accent-dark transition-colors whitespace-nowrap"
-            >
-              Try It Now <ArrowRight size={14} />
-            </Link>
-          </div>
-        </section>
       </main>
 
       <Footer />
