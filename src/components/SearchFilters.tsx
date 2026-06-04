@@ -3,6 +3,14 @@ import { Search, SlidersHorizontal, X } from "lucide-react";
 import type { FilterState } from "@/types";
 import { CATEGORIES, TECH_TAGS } from "@/lib/data";
 
+declare global {
+  interface Window {
+    pendo?: {
+      track: (eventName: string, properties?: Record<string, unknown>) => void;
+    };
+  }
+}
+
 interface Props {
   filters: FilterState;
   onChange: (f: Partial<FilterState>) => void;
@@ -22,6 +30,14 @@ export default function SearchFilters({ filters, onChange, count, total }: Props
     filters.techTag;
 
   function reset() {
+    window.pendo?.track("hackathon_filters_reset", {
+      previous_search_query: filters.search.substring(0, 100),
+      previous_category_filter: filters.category,
+      previous_difficulty_filter: filters.difficulty,
+      previous_status_filter: filters.status,
+      previous_tech_tag_filter: filters.techTag || "none",
+      previous_results_count: count,
+    });
     onChange({ search: "", category: "All", difficulty: "All", status: "All", techTag: "" });
   }
 
