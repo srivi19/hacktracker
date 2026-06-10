@@ -33,18 +33,14 @@ npm run dev
 # Open http://localhost:3000
 ```
 
-## 5. Deploy to Vercel (free, 2 min)
+## 5. Deploy to Railway (free, 2 min)
 
 ```bash
-npm install -g vercel
-vercel
-# Follow prompts — select the hacktracker folder
-# Add environment variables when prompted (or in Vercel dashboard)
+# Push to GitHub, then connect via https://railway.app
+# Railway will auto-deploy on push
 ```
 
-Or push to GitHub and connect via https://vercel.com/new
-
-**Add these env vars in Vercel dashboard:**
+**Add these env vars in Railway dashboard:**
 - `GEMINI_API_KEY`
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -59,7 +55,7 @@ Or push to GitHub and connect via https://vercel.com/new
 
 ## 7. Submission checklist
 
-- [ ] Live URL deployed on Vercel
+- [ ] Live URL deployed on Railway
 - [ ] Novus.ai installed + screenshot of dashboard
 - [ ] 2–3 min demo video (YouTube/Loom)
 - [ ] Short written description on Devpost
@@ -75,5 +71,5 @@ Or push to GitHub and connect via https://vercel.com/new
 | Styling | Tailwind CSS |
 | Database | Supabase (Postgres) |
 | AI Summaries | Gemini 1.5 Flash |
-| Hosting | Vercel |
+| Hosting | Railway |
 | Email Alerts | Resend (optional) |

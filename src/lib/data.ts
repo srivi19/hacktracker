@@ -201,7 +201,7 @@ export const WINNER_PROJECTS: WinnerProject[] = [
     hackathon_year: 2025,
     project_name: "HackMate",
     prize_won: "2nd Place — $5,000",
-    tech_stack: ["Next.js", "OpenAI", "Supabase", "Vercel"],
+    tech_stack: ["Next.js", "OpenAI", "Supabase", "Railway"],
     description: "AI hackathon companion that generates project ideas, professional READMEs, and pitch decks from a single prompt.",
     url: "https://devpost.com/software/hackmate-3brfmx",
     insight: "Meta-hackathon tools (tools for hackers) punch above their weight with judges who get the irony.",
@@ -239,6 +239,6 @@ export const AI_INSIGHTS = [
   "📊 Projects with live demos beat static screenshots by 3x in judging scores",
   "🚀 Gemini Flash is the fastest free AI for hackathon summarization tasks",
   "💡 'Meta' tools (tools for hackers, submitted to hackathons) score high on originality",
-  "⚡ Vercel + Next.js = fastest path from code to live URL — judges can actually click it",
+  "⚡ Next.js + Railway = fastest path from code to live URL — judges can actually click it",
   "🎯 Healthcare AI winners always solve last-mile UX, not just model accuracy",
 ];

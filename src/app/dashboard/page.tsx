@@ -358,7 +358,7 @@ export default function DashboardPage() {
                 <li>→ Projects that demo in under <strong>90 seconds</strong> score 40% higher on &ldquo;Shippedness&rdquo;</li>
                 <li>→ <strong>Healthcare AI</strong> wins are almost always about UX, not model accuracy</li>
                 <li>→ &ldquo;Meta&rdquo; tools (hackathon tools in hackathons) score unusually high on Originality</li>
-                <li>→ <strong>Next.js + Vercel</strong> = 95% of deployed winners. Judges need a live URL.</li>
+                <li>→ <strong>Next.js + Railway</strong> = fastest deployment. Judges need a live URL.</li>
                 <li>→ Teams of <strong>2–3</strong> outperform solo and 4+ on execution quality</li>
               </ul>
             </div>
