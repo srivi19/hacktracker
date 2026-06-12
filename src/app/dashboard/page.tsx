@@ -150,7 +150,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col dot-grid-bg dark:dot-grid-bg-dark">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-900 transition-colors">
       <Header />
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full">

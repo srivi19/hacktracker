@@ -45,7 +45,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className="antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">{children}</body>
+      <body className="antialiased bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">{children}</body>
     </html>
   );
 }
