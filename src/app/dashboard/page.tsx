@@ -150,10 +150,28 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-900 transition-colors">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-900 transition-colors relative overflow-hidden">
+      {/* Floating animated elements */}
+      <div className="fixed inset-0 pointer-events-none opacity-30">
+        {/* Floating trophies */}
+        <div className="absolute top-20 left-5 text-4xl animate-bounce" style={{ animationDelay: "0s", animationDuration: "3s" }}>🏆</div>
+        <div className="absolute top-40 right-10 text-3xl animate-bounce" style={{ animationDelay: "1s", animationDuration: "4s" }}>⚡</div>
+        <div className="absolute bottom-32 left-20 text-3xl animate-bounce" style={{ animationDelay: "0.5s", animationDuration: "3.5s" }}>💡</div>
+        <div className="absolute bottom-20 right-5 text-4xl animate-bounce" style={{ animationDelay: "1.5s", animationDuration: "3s" }}>🚀</div>
+
+        {/* Floating code brackets */}
+        <div className="absolute top-1/4 right-20 text-2xl font-black text-accent opacity-20 animate-float" style={{ animationDelay: "0s" }}>{'{ }'}</div>
+        <div className="absolute bottom-1/3 left-10 text-2xl font-black text-blue-500 opacity-20 animate-float" style={{ animationDelay: "1s" }}>{'< >'}</div>
+
+        {/* Floating stars */}
+        <div className="absolute top-1/3 left-1/4 text-2xl animate-pulse" style={{ animationDelay: "0s" }}>✨</div>
+        <div className="absolute top-1/2 right-1/4 text-2xl animate-pulse" style={{ animationDelay: "0.5s" }}>⭐</div>
+        <div className="absolute bottom-1/4 right-1/3 text-2xl animate-pulse" style={{ animationDelay: "1s" }}>✨</div>
+      </div>
+
       <Header />
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full relative z-10">
 
         {/* Page header */}
         <div className="flex items-start justify-between mb-6">
@@ -196,28 +214,34 @@ export default function DashboardPage() {
           </div>
         )}
 
-        {/* Tabs */}
-        <div className="flex items-center gap-1 mb-6 border-b border-slate-200 dark:border-slate-700">
-          {(["hackathons", "winners", "insights", "analytics"] as const).map((t) => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 -mb-px ${
-                tab === t
-                  ? "border-accent text-accent"
-                  : "border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
-              }`}
-            >
-              {t === "hackathons" && (
-                <span className="flex items-center gap-1.5">
-                  <Calendar size={12} /> Hackathons ({hackathons.length})
-                </span>
-              )}
-              {t === "winners" && <span className="flex items-center gap-1.5"><span>🏆</span> Winners</span>}
-              {t === "insights" && <span className="flex items-center gap-1.5"><Zap size={12} /> AI Insights</span>}
-              {t === "analytics" && <span className="flex items-center gap-1.5"><Database size={12} /> Analytics</span>}
-            </button>
-          ))}
+        {/* Tabs - PROMINENT */}
+        <div className="mb-8">
+          <div className="flex flex-wrap items-center gap-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl p-2 border border-slate-200 dark:border-slate-700 transition-colors">
+            {(["hackathons", "winners", "insights", "analytics"] as const).map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all whitespace-nowrap ${
+                  tab === t
+                    ? "bg-accent text-white shadow-lg shadow-green-200 dark:shadow-green-900"
+                    : "text-slate-600 dark:text-slate-400 hover:text-navy dark:hover:text-slate-200 hover:bg-white dark:hover:bg-slate-700"
+                }`}
+              >
+                {t === "hackathons" && (
+                  <span className="flex items-center gap-2">
+                    <Calendar size={16} />
+                    <span>HACKATHONS</span>
+                    <span className="bg-slate-200 dark:bg-slate-600 px-2 py-0.5 rounded-full text-xs font-semibold">
+                      {hackathons.length}
+                    </span>
+                  </span>
+                )}
+                {t === "winners" && <span className="flex items-center gap-2"><span>🏆</span> <span>WINNERS</span></span>}
+                {t === "insights" && <span className="flex items-center gap-2"><Zap size={16} /> <span>AI INSIGHTS</span></span>}
+                {t === "analytics" && <span className="flex items-center gap-2"><Database size={16} /> <span>ANALYTICS</span></span>}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Hackathons tab */}

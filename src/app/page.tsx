@@ -22,11 +22,40 @@ export default function HomePage() {
   const featured = HACKATHONS.filter((h) => h.featured);
 
   return (
-    <div className="min-h-screen flex flex-col dot-grid-bg">
+    <div className="min-h-screen flex flex-col dot-grid-bg relative">
+      {/* Floating hackathon-themed animations */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        {/* Top row floating elements */}
+        <div className="absolute top-10 left-8 text-5xl animate-bounce" style={{ animationDelay: "0s", animationDuration: "3.5s" }}>🏆</div>
+        <div className="absolute top-24 left-1/4 text-4xl animate-pulse">⭐</div>
+        <div className="absolute top-16 right-1/4 text-5xl animate-bounce" style={{ animationDelay: "1.5s", animationDuration: "3s" }}>💻</div>
+        <div className="absolute top-32 right-10 text-4xl animate-pulse" style={{ animationDelay: "0.5s" }}>🚀</div>
+
+        {/* Middle floating elements */}
+        <div className="absolute top-1/3 left-5 text-3xl animate-float" style={{ animationDelay: "0.5s" }}>⚡</div>
+        <div className="absolute top-1/2 right-20 text-4xl animate-bounce" style={{ animationDelay: "2s", animationDuration: "4s" }}>💡</div>
+        <div className="absolute top-2/3 left-1/3 text-3xl animate-pulse" style={{ animationDelay: "1s" }}>🎯</div>
+
+        {/* Bottom floating elements */}
+        <div className="absolute bottom-20 left-20 text-4xl animate-bounce" style={{ animationDelay: "1s", animationDuration: "3.5s" }}>🤖</div>
+        <div className="absolute bottom-32 right-1/4 text-3xl animate-float" style={{ animationDelay: "1.5s" }}>✨</div>
+        <div className="absolute bottom-10 right-10 text-5xl animate-bounce" style={{ animationDelay: "0.5s", animationDuration: "3s" }}>🌟</div>
+
+        {/* Floating code symbols */}
+        <div className="absolute top-1/4 right-5 text-2xl font-black text-green-400 opacity-30 animate-float">{'{ }'}</div>
+        <div className="absolute bottom-1/3 right-1/3 text-2xl font-black text-blue-400 opacity-30 animate-float" style={{ animationDelay: "1s" }}>{'< >'}</div>
+        <div className="absolute top-3/4 left-1/4 text-2xl font-black text-purple-400 opacity-30 animate-float" style={{ animationDelay: "0.5s" }}>{'[ ]'}</div>
+
+        {/* Floating tech badges */}
+        <div className="absolute top-1/3 right-1/3 px-3 py-1 rounded-full bg-green-100/30 text-xs font-bold text-green-700 dark:text-green-400 animate-pulse" style={{ animationDelay: "0s" }}>AI</div>
+        <div className="absolute bottom-1/4 left-1/2 px-3 py-1 rounded-full bg-blue-100/30 text-xs font-bold text-blue-700 dark:text-blue-400 animate-pulse" style={{ animationDelay: "0.7s" }}>Hackathon</div>
+        <div className="absolute top-2/3 right-1/4 px-3 py-1 rounded-full bg-purple-100/30 text-xs font-bold text-purple-700 dark:text-purple-400 animate-pulse" style={{ animationDelay: "1.4s" }}>Winners</div>
+      </div>
+
       <Header />
 
       {/* Hero */}
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
         <section className="relative hero-gradient overflow-hidden">
           {/* Animated floating elements */}
           <div className="absolute top-20 left-10 opacity-40 animate-bounce" style={{ animationDelay: "0s" }}>
