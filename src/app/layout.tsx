@@ -41,8 +41,8 @@ export default function RootLayout({
           src="https://novus.pendo.io/sdk/web.js"
           strategy="afterInteractive"
           onLoad={() => {
-            if (window.pendo) {
-              window.pendo.initialize({
+            if ((window as any).pendo) {
+              (window as any).pendo.initialize({
                 visitor: {
                   id: "aihacktracker-user",
                   email: "judges@aihacktracker.dev"
