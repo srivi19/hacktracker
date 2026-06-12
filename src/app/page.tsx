@@ -2,7 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { HACKATHONS, AI_INSIGHTS } from "@/lib/data";
-import { Trophy, Zap, Bell, Search, Calendar, Users, ArrowRight, Play } from "lucide-react";
+import { Trophy, Zap, Bell, Search, Calendar, Users, ArrowRight, Play, Code2, Rocket, Brain, Target } from "lucide-react";
 
 const FEATURE_TAGS = [
   "AI Summaries", "Deadline Tracker", "Prize Pool Filter",
@@ -27,8 +27,30 @@ export default function HomePage() {
 
       {/* Hero */}
       <main className="flex-1">
-        <section className="relative hero-gradient">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-20 pb-16 text-center">
+        <section className="relative hero-gradient overflow-hidden">
+          {/* Animated floating elements */}
+          <div className="absolute top-20 left-10 opacity-40 animate-bounce" style={{ animationDelay: "0s" }}>
+            <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-green-400 to-green-200 flex items-center justify-center text-white shadow-lg">
+              <Code2 size={32} />
+            </div>
+          </div>
+          <div className="absolute top-40 right-10 opacity-40 animate-bounce" style={{ animationDelay: "1s" }}>
+            <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-blue-400 to-blue-200 flex items-center justify-center text-white shadow-lg">
+              <Brain size={32} />
+            </div>
+          </div>
+          <div className="absolute bottom-20 left-20 opacity-40 animate-bounce" style={{ animationDelay: "2s" }}>
+            <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-purple-400 to-purple-200 flex items-center justify-center text-white shadow-lg">
+              <Rocket size={32} />
+            </div>
+          </div>
+          <div className="absolute bottom-40 right-20 opacity-40 animate-bounce" style={{ animationDelay: "1.5s" }}>
+            <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-orange-400 to-orange-200 flex items-center justify-center text-white shadow-lg">
+              <Target size={32} />
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-20 pb-16 text-center relative z-10">
 
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-200 bg-green-50 text-green-700 text-xs font-semibold mb-8">
@@ -83,9 +105,9 @@ export default function HomePage() {
         {/* Stats bar */}
         <section className="border-y border-slate-200 bg-white/60">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-            {STATS.map((s) => (
-              <div key={s.label}>
-                <p className="text-2xl sm:text-3xl font-black text-navy">{s.value}</p>
+            {STATS.map((s, i) => (
+              <div key={s.label} className="animate-fadeInUp" style={{ animationDelay: `${i * 0.1}s` }}>
+                <p className="text-2xl sm:text-3xl font-black text-navy hover:text-accent transition-colors">{s.value}</p>
                 <p className="text-xs text-slate-500 mt-0.5 uppercase tracking-wide font-medium">{s.label}</p>
               </div>
             ))}
@@ -108,13 +130,14 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {featured.map((h) => (
+            {featured.map((h, i) => (
               <a
                 key={h.id}
                 href={h.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hack-card group"
+                className="hack-card group animate-fadeInUp"
+                style={{ animationDelay: `${i * 0.15}s` }}
               >
                 <div className="flex items-start justify-between mb-3">
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide status-${h.status}`}>
@@ -162,7 +185,8 @@ export default function HomePage() {
               {AI_INSIGHTS.map((insight, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-slate-200 rounded-lg px-4 py-3 text-xs text-slate-700 hover:border-green-300 transition-colors"
+                  className="bg-white border border-slate-200 rounded-lg px-4 py-3 text-xs text-slate-700 hover:border-green-300 hover:shadow-lg transition-all animate-fadeInUp"
+                  style={{ animationDelay: `${i * 0.1}s` }}
                 >
                   {insight}
                 </div>
@@ -202,12 +226,12 @@ export default function HomePage() {
                 title: "Deadline Alerts",
                 desc: "48-hour email warnings for hackathons you starred. Never miss a deadline again.",
               },
-            ].map((f) => (
-              <div key={f.title} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-green-300 transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center text-accent mb-3">
+            ].map((f, i) => (
+              <div key={f.title} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-green-300 hover:shadow-lg transition-all animate-fadeInUp group" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center text-accent mb-3 group-hover:bg-green-100 transition-colors">
                   {f.icon}
                 </div>
-                <h3 className="font-bold text-navy text-sm mb-1">{f.title}</h3>
+                <h3 className="font-bold text-navy text-sm mb-1 group-hover:text-accent transition-colors">{f.title}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
               </div>
             ))}
