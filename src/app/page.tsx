@@ -209,75 +209,57 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left: Animated Globe/World Map */}
-            <div className="flex justify-center">
-              <div className="relative w-80 h-80">
-                {/* Animated globe background */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-300 to-blue-100 border-2 border-blue-400 shadow-2xl animate-float" style={{ animationDuration: "8s" }}>
-                  {/* Realistic Earth Map */}
-                  <svg className="w-full h-full" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg">
-                    {/* Ocean background */}
-                    <circle cx="180" cy="90" r="95" fill="#0369a1" opacity="0.3" />
+            {/* Left: Flat Earth Map */}
+            <div className="flex justify-center items-center">
+              <div className="relative">
+                {/* Flat Earth Map */}
+                <svg className="w-96 h-64" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" style={{ filter: "drop-shadow(0 20px 25px rgb(0 0 0 / 0.1))" }}>
+                  {/* Ocean background */}
+                  <rect width="960" height="600" fill="#0ea5e9" />
 
-                    {/* Continents - Simplified but recognizable shapes */}
+                  {/* Continents with simplified shapes */}
+                  {/* North America */}
+                  <path d="M 100 150 L 150 160 L 160 120 L 180 130 L 180 220 L 150 240 L 100 200 Z" fill="#10b981" />
 
-                    {/* North America */}
-                    <path d="M 50 50 L 65 55 L 70 45 L 75 50 L 75 70 L 70 80 L 55 75 L 50 65 Z" fill="#059669" opacity="0.9" />
+                  {/* South America */}
+                  <path d="M 130 240 L 160 250 L 170 320 L 150 360 L 120 340 Z" fill="#059669" />
 
-                    {/* South America */}
-                    <path d="M 60 75 L 70 78 L 72 95 L 68 110 L 60 105 L 58 90 Z" fill="#10b981" opacity="0.85" />
+                  {/* Greenland */}
+                  <path d="M 220 80 L 240 90 L 235 140 L 215 130 Z" fill="#10b981" />
 
-                    {/* Greenland */}
-                    <path d="M 90 35 L 95 38 L 93 48 L 88 45 Z" fill="#059669" opacity="0.8" />
+                  {/* Europe */}
+                  <path d="M 340 120 L 380 130 L 390 180 L 360 190 L 340 160 Z" fill="#10b981" />
 
-                    {/* Europe */}
-                    <path d="M 100 45 L 115 48 L 118 58 L 110 62 L 100 58 Z" fill="#059669" opacity="0.9" />
+                  {/* Africa */}
+                  <path d="M 380 180 L 440 170 L 460 250 L 450 340 L 410 360 L 380 320 Z" fill="#059669" />
 
-                    {/* Africa */}
-                    <path d="M 110 60 L 130 58 L 135 75 L 133 100 L 125 108 L 110 105 L 108 80 Z" fill="#10b981" opacity="0.9" />
+                  {/* Middle East */}
+                  <path d="M 420 140 L 460 150 L 470 220 L 440 230 Z" fill="#10b981" />
 
-                    {/* Middle East */}
-                    <path d="M 120 55 L 135 58 L 138 75 L 125 75 Z" fill="#059669" opacity="0.85" />
+                  {/* Russia */}
+                  <path d="M 420 80 L 520 75 L 540 140 L 480 150 L 420 120 Z" fill="#10b981" />
 
-                    {/* Asia */}
-                    <path d="M 130 45 L 160 48 L 165 65 L 150 78 L 135 75 L 130 60 Z" fill="#059669" opacity="0.9" />
+                  {/* Asia */}
+                  <path d="M 480 140 L 600 135 L 640 200 L 560 240 L 480 220 Z" fill="#059669" />
 
-                    {/* Southeast Asia */}
-                    <path d="M 155 70 L 165 72 L 168 85 L 160 88 L 155 80 Z" fill="#10b981" opacity="0.85" />
+                  {/* Southeast Asia */}
+                  <path d="M 580 200 L 630 210 L 650 270 L 600 280 Z" fill="#10b981" />
 
-                    {/* Australia */}
-                    <path d="M 160 100 L 175 102 L 178 115 L 165 118 L 160 110 Z" fill="#059669" opacity="0.85" />
+                  {/* Australia */}
+                  <path d="M 620 320 L 680 330 L 700 400 L 650 410 Z" fill="#059669" />
 
-                    {/* New Zealand */}
-                    <path d="M 180 115 L 185 117 L 183 125 L 178 122 Z" fill="#10b981" opacity="0.8" />
+                  {/* New Zealand */}
+                  <path d="M 710 380 L 740 390 L 735 440 L 710 430 Z" fill="#10b981" />
 
-                    {/* Russia */}
-                    <path d="M 135 42 L 165 40 L 168 55 L 150 58 L 135 52 Z" fill="#059669" opacity="0.85" />
+                  {/* Japan */}
+                  <circle cx="650" cy="180" r="12" fill="#10b981" />
 
-                    {/* Japan */}
-                    <circle cx="170" cy="55" r="3" fill="#059669" opacity="0.8" />
-
-                    {/* Latitude/Longitude grid - subtle */}
-                    <circle cx="180" cy="90" r="95" fill="none" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.2" />
-                    <circle cx="180" cy="90" r="85" fill="none" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.15" />
-                    <line x1="180" y1="0" x2="180" y2="180" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.1" />
-                    <line x1="0" y1="90" x2="360" y2="90" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.1" />
-                  </svg>
-                </div>
-
-                {/* Animated location pins */}
-                <div className="absolute top-12 left-12 animate-bounce" style={{ animationDelay: "0s" }}>
-                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg" />
-                </div>
-                <div className="absolute top-20 right-16 animate-bounce" style={{ animationDelay: "0.5s" }}>
-                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg" />
-                </div>
-                <div className="absolute bottom-24 left-20 animate-bounce" style={{ animationDelay: "1s" }}>
-                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg" />
-                </div>
-                <div className="absolute bottom-12 right-12 animate-bounce" style={{ animationDelay: "1.5s" }}>
-                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg" />
-                </div>
+                  {/* Location markers */}
+                  <circle cx="140" cy="180" r="8" fill="#ef4444" opacity="0.9" />
+                  <circle cx="360" cy="140" r="8" fill="#ef4444" opacity="0.9" />
+                  <circle cx="420" cy="200" r="8" fill="#ef4444" opacity="0.9" />
+                  <circle cx="680" cy="320" r="8" fill="#ef4444" opacity="0.9" />
+                </svg>
               </div>
             </div>
 
