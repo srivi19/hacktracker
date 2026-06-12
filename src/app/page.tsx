@@ -71,8 +71,8 @@ export default function HomePage() {
                 EXPLORE HACKATHONS <ArrowRight size={16} />
               </Link>
               <Link
-                href="/dashboard#winners"
-                className="flex items-center gap-2 px-8 py-3 border border-slate-300 text-slate-700 font-semibold text-sm tracking-wide rounded-lg hover:border-slate-400 transition-colors bg-white"
+                href="/dashboard?tab=insights"
+                className="flex items-center gap-2 px-8 py-3 border-2 border-accent bg-accent text-white font-bold text-sm tracking-wide rounded-lg hover:bg-accent-dark hover:border-accent-dark transition-all shadow-lg shadow-green-200"
               >
                 <Play size={14} /> WHAT WINS?
               </Link>

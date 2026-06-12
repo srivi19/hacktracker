@@ -86,6 +86,17 @@ export default function DashboardPage() {
     fetchScrapeStatus();
   }, [fetchHackathons, fetchScrapeStatus]);
 
+  // Handle URL query parameters for tab switching
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get("tab");
+      if (tabParam === "insights" || tabParam === "winners" || tabParam === "analytics") {
+        setTab(tabParam as any);
+      }
+    }
+  }, []);
+
   function updateFilters(partial: Partial<FilterState>) {
     setFilters((prev) => ({ ...prev, ...partial }));
   }
@@ -332,34 +343,75 @@ export default function DashboardPage() {
         {/* Winners tab */}
         {tab === "winners" && <WinnersSection />}
 
-        {/* AI Insights tab */}
+        {/* AI Insights tab - GRAND & VISUAL */}
         {tab === "insights" && (
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <Zap size={16} className="text-accent" />
-              <h2 className="text-lg font-black text-navy">AI-Powered Winning Intelligence</h2>
-              <span className="chip-green text-[10px]">Gemini 1.5 Flash</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {AI_INSIGHTS.map((insight, i) => (
-                <div key={i} className="bg-white border border-slate-200 rounded-xl p-4 hover:border-green-300 transition-colors">
-                  <p className="text-sm text-slate-700 leading-relaxed">{insight}</p>
+            {/* Header Section */}
+            <div className="mb-10 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl border-2 border-green-200 p-8">
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-12 h-12 rounded-lg bg-accent flex items-center justify-center">
+                      <Zap size={24} className="text-white" />
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-black text-navy">AI-Powered Winning Intelligence</h2>
+                      <p className="text-sm text-slate-600 mt-1">Real patterns from 50+ hackathon winners</p>
+                    </div>
+                  </div>
                 </div>
-              ))}
+                <span className="px-4 py-2 bg-accent text-white font-bold text-xs rounded-full whitespace-nowrap">Gemini 1.5 Flash</span>
+              </div>
             </div>
 
-            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-              <h3 className="font-black text-navy text-sm mb-2 flex items-center gap-2">
-                <Zap size={14} className="text-accent" /> What The Data Shows
-              </h3>
-              <ul className="space-y-2 text-xs text-slate-700">
-                <li>→ <strong>Chrome Extension + AI</strong> is the highest-win combo for Micro-SaaS brackets</li>
-                <li>→ Projects that demo in under <strong>90 seconds</strong> score 40% higher on &ldquo;Shippedness&rdquo;</li>
-                <li>→ <strong>Healthcare AI</strong> wins are almost always about UX, not model accuracy</li>
-                <li>→ &ldquo;Meta&rdquo; tools (hackathon tools in hackathons) score unusually high on Originality</li>
-                <li>→ <strong>Next.js + Railway</strong> = fastest deployment. Judges need a live URL.</li>
-                <li>→ Teams of <strong>2–3</strong> outperform solo and 4+ on execution quality</li>
+            {/* Key Insights Grid */}
+            <div className="mb-10">
+              <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">🔥 Winning Patterns</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {AI_INSIGHTS.map((insight, i) => (
+                  <div
+                    key={i}
+                    className="bg-white border-2 border-slate-200 rounded-xl p-5 hover:border-accent hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
+                  >
+                    <p className="text-sm font-semibold text-navy leading-relaxed">{insight}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Deep Dive Section */}
+            <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl p-8 text-white shadow-xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                  <Zap size={20} />
+                </div>
+                <h3 className="text-2xl font-black">What Actually Wins</h3>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex gap-3 text-sm leading-relaxed">
+                  <span className="text-xl">🏆</span>
+                  <span><strong>Chrome Extension + AI</strong> is the highest-win combo for Micro-SaaS brackets</span>
+                </li>
+                <li className="flex gap-3 text-sm leading-relaxed">
+                  <span className="text-xl">⚡</span>
+                  <span>Projects that demo in under <strong>90 seconds</strong> score 40% higher on &ldquo;Shippedness&rdquo;</span>
+                </li>
+                <li className="flex gap-3 text-sm leading-relaxed">
+                  <span className="text-xl">🏥</span>
+                  <span><strong>Healthcare AI</strong> wins are almost always about UX, not model accuracy</span>
+                </li>
+                <li className="flex gap-3 text-sm leading-relaxed">
+                  <span className="text-xl">🎯</span>
+                  <span>&ldquo;Meta&rdquo; tools (hackathon tools in hackathons) score unusually high on Originality</span>
+                </li>
+                <li className="flex gap-3 text-sm leading-relaxed">
+                  <span className="text-xl">🚀</span>
+                  <span><strong>Next.js + Railway</strong> = fastest deployment. Judges need a live URL.</span>
+                </li>
+                <li className="flex gap-3 text-sm leading-relaxed">
+                  <span className="text-xl">👥</span>
+                  <span>Teams of <strong>2–3</strong> outperform solo and 4+ on execution quality</span>
+                </li>
               </ul>
             </div>
           </div>
