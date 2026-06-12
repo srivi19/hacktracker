@@ -475,7 +475,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
                       <span className="text-lg">👥</span>
-                      <span><strong>New Visitor Alerts:</strong> See when judges join and explore</span>
+                      <span><strong>New Visitor Detection:</strong> Real-time alerts when new judges visit the app</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
                       <span className="text-lg">⚡</span>

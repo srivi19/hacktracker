@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -23,9 +24,12 @@ const config: Config = {
       backgroundImage: {
         "dot-grid":
           "radial-gradient(circle, #cbd5e1 1px, transparent 1px)",
+        "dot-grid-dark":
+          "radial-gradient(circle, #475569 1px, transparent 1px)",
       },
       backgroundSize: {
         "dot-grid": "24px 24px",
+        "dot-grid-dark": "24px 24px",
       },
     },
   },
