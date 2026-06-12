@@ -183,7 +183,7 @@ export default function DashboardPage() {
                 {
                   icon: "⚡",
                   title: "90-Second Demos",
-                  description: "score 40% higher on Shippedness",
+                  description: "score 40% higher on execution speed",
                   color: "from-yellow-500 to-orange-500"
                 },
                 {
@@ -464,7 +464,7 @@ export default function DashboardPage() {
                 </li>
                 <li className="flex gap-3 text-sm leading-relaxed">
                   <span className="text-xl">⚡</span>
-                  <span>Projects that demo in under <strong>90 seconds</strong> score 40% higher on Shippedness</span>
+                  <span>Projects that demo in under <strong>90 seconds</strong> score 40% higher on execution speed</span>
                 </li>
                 <li className="flex gap-3 text-sm leading-relaxed">
                   <span className="text-xl">🏥</span>
@@ -504,7 +504,7 @@ export default function DashboardPage() {
                     </div>
                   </div>
                   <p className="text-base font-semibold text-slate-700 dark:text-slate-300 mt-6 mb-6">
-                    ✅ <strong>Live user tracking enabled</strong> — See who's using AIHackTracker, what they click, and how they interact with hackathons.
+                    ✅ <strong>Live user tracking enabled</strong> &mdash; See who is using AIHackTracker, what they click, and how they interact with hackathons.
                   </p>
                   <div className="space-y-3 mb-8">
                     <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
@@ -539,7 +539,7 @@ export default function DashboardPage() {
                   <span className="text-xl">→</span>
                 </a>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-4">
-                  Once you join, you'll see live Novus analytics: user activity, engagement metrics, and product signals in real-time.
+                  Once you join, you will see live Novus analytics: user activity, engagement metrics, and product signals in real-time.
                 </p>
               </div>
             </div>
