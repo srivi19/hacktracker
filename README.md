@@ -5,8 +5,14 @@
 > *Built with ❤️ for the Mind the Product Hackathon 2026*
 
 **Live:** https://hacktracker-production.up.railway.app/  
-**Deadline:** June 20, 2026 · 8 days remaining  
+**Deadline:** June 20, 2026  
 **Builder:** Vi (Srividya Narayanan) · [Contact](mailto:srividya.chandra@gmail.com)
+
+**📱 Connect & Explore:**
+- 🌐 **[Live App](https://hacktracker-production.up.railway.app/)** — 21+ AI hackathons
+- 💬 **[Slack Community](https://join.slack.com/t/aihacktracker-33m8986/shared_invite/zt-40tfdsjk2-9FQcGdIA5GFn6mf_FHcPvg)** — Real-time analytics & judge updates
+- 📊 **[Analytics Dashboard](https://app.novus.ai/)** — Live tracking with Novus.ai
+- 🔗 **[GitHub Repo](https://github.com/srivi19/hacktracker)** — Source code & deployment
 
 ---
 
@@ -40,12 +46,12 @@ AIHackTracker is a one-stop intelligence hub for AI hackathons. It aggregates op
 
 | Feature | Description | Impact |
 |---------|-------------|--------|
-| **🎯 Curated Directory** | 8+ current AI hackathons with real-time status | Never miss a deadline |
+| **🎯 Curated Directory** | 21+ current AI hackathons from Supabase | Never miss a deadline |
 | **📅 Calendar View** | Visualize all deadlines on an interactive calendar | Plan your schedule |
 | **🏆 Winning Intelligence** | Analysis of 50+ past winners and patterns | Learn what judges reward |
-| **💰 Prize Insights** | $112,500+ total prize pool tracked | Maximize opportunities |
-| **📊 Live Analytics** | Real-time Novus.ai tracking via Slack | See who's using it |
-| **🌙 Dark Mode** | Eye-friendly night mode with toggle | Code-friendly theme |
+| **💰 Prize Insights** | $200K+ total prize pool tracked | Maximize opportunities |
+| **📊 Live Analytics** | Real-time Novus.ai tracking → Slack alerts | See who's using it |
+| **🌙 Dark Mode** | Fully styled night mode with toggle | Code-friendly theme |
 | **🗓️ Calendar Export** | Add deadlines to Google Calendar instantly | Never forget a date |
 | **⚡ Lightning Fast** | Next.js + Supabase + Railway | Instant load times |
 | **♻️ Auto-Refresh** | pg_cron updates every 10 days | Always up-to-date |
@@ -54,18 +60,24 @@ AIHackTracker is a one-stop intelligence hub for AI hackathons. It aggregates op
 
 ## Current Hackathons (June 2026)
 
+**21+ AI hackathons tracked** from top sponsors:
+
 | Hackathon | Deadline | Prize Pool | Status | Category |
 |-----------|----------|-----------|--------|----------|
 | USAII® Global AI Hackathon | June 21 | $15,000 | 🟢 Open | AI Safety |
 | Google Cloud Rapid Agent | June 25 | $30,000 | 🟢 Open | Agent AI |
 | DeveloperWeek 2026 | June 20 | $12,500 | 🟢 Open | Developer Tools |
-| DevNetwork [AI + ML] | June 18 | $8,000 | 🟢 Open | AI / ML |
 | Mind the Product 2026 | June 20 | $2,000 | 🟢 Open | Product |
-| Hack Devpost 2026 | June 12 | $12,000 | 🔴 Closing Soon | DevTools |
-| ProduHacks 2026 | July 15 | $8,000 | 🟡 Upcoming | Product |
+| NVIDIA AI Challenge 2026 | July 25 | $40,000 | 🟢 Open | AI / ML |
 | OpenAI Open Model 2026 | July 31 | $25,000 | 🟢 Open | AI / ML |
+| Meta LLM Hackathon 2026 | July 10 | $35,000 | 🟢 Open | LLM |
+| Anthropic Claude Hackathon | Aug 5 | $25,000 | 🟢 Open | Claude API |
+| Stanford AI Summit | July 20 | $18,000 | 🟢 Open | Academic |
+| ProduHacks 2026 | July 15 | $8,000 | 🟡 Upcoming | Product |
 
-**Total Prize Pool:** $112,500
+**Full list available in the [Live App](https://hacktracker-production.up.railway.app/)**
+
+**Total Prize Pool:** $200K+
 
 ---
 
@@ -102,7 +114,7 @@ Visit: https://hacktracker-production.up.railway.app/
 
 ```bash
 # 1. Clone and install
-git clone <repo>
+git clone https://github.com/srivi19/hacktracker
 cd hacktracker
 npm install
 
@@ -207,8 +219,9 @@ hacktracker/
 │   │   ├── NovusCarousel.tsx     # Analytics screenshots
 │   │   └── Footer.tsx            # Footer with links
 │   ├── lib/
-│   │   ├── data.ts               # Static seed data (8 hackathons)
-│   │   ├── supabase.ts           # Supabase client
+│   │   ├── data.ts               # Static seed data (fallback)
+│   │   ├── supabase.ts           # Supabase client + PostgreSQL connection
+│   │   ├── calendar-utils.ts     # Google Calendar export functions
 │   │   └── gemini.ts             # Gemini API (optional)
 │   └── types/
 │       └── index.ts              # TypeScript types
@@ -260,16 +273,20 @@ From analyzing 6 winning projects, AIHackTracker reveals:
 
 ---
 
-## Analytics
+## Analytics & Real-Time Alerts
 
-AIHackTracker uses **Novus.ai** to track:
-- Page views
-- Hackathon card clicks
-- Filter/category changes
-- Calendar interactions
-- External link clicks
+AIHackTracker uses **Novus.ai** integrated with **Slack** to track:
+- ✅ Page views (automatic)
+- ✅ Hackathon card clicks & interactions
+- ✅ Filter/category changes
+- ✅ Calendar date selections
+- ✅ External Devpost link clicks
+- ✅ New visitor detection → Slack alert
 
-**Dashboard:** View live analytics at https://app.novus.ai/ (with Novus account)
+**Features:**
+- 📊 **Live Dashboard:** https://app.novus.ai/ (view analytics)
+- 💬 **Slack Integration:** Join the [community](https://join.slack.com/t/aihacktracker-33m8986/shared_invite/zt-40tfdsjk2-9FQcGdIA5GFn6mf_FHcPvg) for real-time judge notifications
+- 🔔 **Judge Alerts:** See when new users visit and interact with hackathons in real-time
 
 ---
 
@@ -293,9 +310,10 @@ AIHackTracker uses **Novus.ai** to track:
 
 ## Support
 
-**Found a bug?** Open an issue on GitHub
-**Want to contribute?** PRs welcome!
-**Questions?** Email Vi at srividya.chandra@gmail.com
+**Found a bug?** [Open an issue on GitHub](https://github.com/srivi19/hacktracker/issues)  
+**Want to contribute?** [PRs welcome!](https://github.com/srivi19/hacktracker/pulls)  
+**Questions?** Email Vi at [srividya.chandra@gmail.com](mailto:srividya.chandra@gmail.com)  
+**Join the community?** [Slack channel](https://join.slack.com/t/aihacktracker-33m8986/shared_invite/zt-40tfdsjk2-9FQcGdIA5GFn6mf_FHcPvg) for live updates
 
 ---
 

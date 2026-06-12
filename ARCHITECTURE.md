@@ -2,6 +2,12 @@
 
 **Built with ❤️ by Vi (Srividya Narayanan) for Mind the Product Hackathon 2026**
 
+**Links:**
+- 🌐 **[Live App](https://hacktracker-production.up.railway.app/)** — Production instance
+- 🔗 **[GitHub](https://github.com/srivi19/hacktracker)** — Source code
+- 💬 **[Slack](https://join.slack.com/t/aihacktracker-33m8986/shared_invite/zt-40tfdsjk2-9FQcGdIA5GFn6mf_FHcPvg)** — Community updates
+- 📊 **[Analytics](https://app.novus.ai/)** — Novus dashboard
+
 ---
 
 ## System Overview
@@ -69,7 +75,7 @@ Supabase (PostgreSQL) is the **primary** source of truth for all hackathon data.
 ┌─────────────────────────────────┐
 │ Supabase (PostgreSQL)           │
 ├─────────────────────────────────┤
-│ hackathons (8+ current)         │
+│ hackathons (21+ current)        │
 │ winners (6 past winners)        │
 │ user_alerts (future emails)     │
 └─────────────────────────────────┘
@@ -94,10 +100,11 @@ Supabase (PostgreSQL) is the **primary** source of truth for all hackathon data.
 
 If Supabase is unavailable, the API falls back to **static seed data** in `src/lib/data.ts`. This ensures the site never goes down completely.
 
-- Contains 8 current hackathons (as of June 2026)
+- Contains 8 fallback hackathons (emergency backup only)
 - Contains 6 past winner projects
 - Data is imported as default in every API response
-- Response includes `"source": "supabase"` or `"source": "static-fallback"` to help debugging
+- Response includes `"source": "supabase"` (live) or `"source": "static-fallback"` (backup) for debugging
+- **Note:** Live production always uses Supabase (21+ hackathons)
 
 ### Database Schema
 
@@ -466,17 +473,24 @@ Deploy from GitHub → Railway automatically on push
 
 **Author:** Vi (Srividya Narayanan)  
 **Project:** AIHackTracker for Mind the Product Hackathon 2026  
-**Version:** 1.0 (Supabase + pg_cron + Novus Analytics)  
+**Version:** 1.0 (Supabase + pg_cron + Novus Analytics + Dark Mode)  
 **Last Updated:** June 12, 2026  
-**Status:** 🟢 Production Ready
+**Status:** 🟢 Production Ready (21+ hackathons live)
+
+**Quick Links:**
+- 🌐 **[Live App](https://hacktracker-production.up.railway.app/)**
+- 🔗 **[GitHub Repo](https://github.com/srivi19/hacktracker)**
+- 💬 **[Slack Community](https://join.slack.com/t/aihacktracker-33m8986/shared_invite/zt-40tfdsjk2-9FQcGdIA5GFn6mf_FHcPvg)**
+- 📊 **[Analytics Dashboard](https://app.novus.ai/)**
 
 **Technologies Used:**
-- Frontend: Next.js 14, React 18, TypeScript, Tailwind CSS
-- Backend: Node.js, PostgreSQL (Supabase)
-- Database: Supabase with pg_cron, Row-Level Security
-- AI: Google Gemini 1.5 Flash
-- Analytics: Novus.ai with Slack integration
-- Deployment: Railway
-- Hosting: Railway (Free tier)
+- **Frontend:** Next.js 14, React 18, TypeScript, Tailwind CSS (with dark mode)
+- **Backend:** Node.js, PostgreSQL (Supabase)
+- **Database:** Supabase with pg_cron, Row-Level Security
+- **AI:** Google Gemini 1.5 Flash (optional)
+- **Analytics:** Novus.ai with Slack integration
+- **Calendar Export:** Google Calendar intent URLs
+- **Deployment:** Railway
+- **Hosting:** Railway (Free tier)
 
 **Special Thanks:** Mind the Product team for the opportunity to build something meaningful! 🙌
