@@ -33,6 +33,11 @@ export default function HackathonCard({ hackathon: h }: Props) {
     year: "numeric",
   });
 
+  const handleAddToCalendar = () => {
+    const calendarUrl = generateGoogleCalendarUrl(h);
+    window.open(calendarUrl, "_blank");
+  };
+
   return (
     <div className="hack-card flex flex-col">
       {/* Top row */}
@@ -87,15 +92,13 @@ export default function HackathonCard({ hackathon: h }: Props) {
           {daysLeft > 0 ? `${daysLeft}d left` : "Closed"}
         </span>
         <div className="flex items-center gap-2">
-          <a
-            href={generateGoogleCalendarUrl(h)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-xs font-bold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors"
+          <button
+            onClick={handleAddToCalendar}
+            className="flex items-center gap-1 text-xs font-bold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors cursor-pointer"
             title="Add to Google Calendar"
           >
             <Calendar size={11} />
-          </a>
+          </button>
           <a
             href={h.url}
             target="_blank"
