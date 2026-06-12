@@ -171,6 +171,114 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Global Reach Section */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-black text-navy tracking-tight mb-2">
+              🌍 Hackathons from Around the World
+            </h2>
+            <p className="text-slate-500 text-sm">Opportunities across North America, Europe, Asia, and beyond</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left: Animated Globe/World Map */}
+            <div className="flex justify-center">
+              <div className="relative w-80 h-80">
+                {/* Animated globe background */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 border-2 border-blue-200 shadow-xl animate-float" style={{ animationDuration: "6s" }}>
+                  {/* Continents representation - simplified */}
+                  <svg className="w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="95" fill="none" stroke="#cbd5e1" strokeWidth="1" opacity="0.3" />
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="#cbd5e1" strokeWidth="1" opacity="0.2" />
+
+                    {/* North America */}
+                    <circle cx="50" cy="60" r="12" fill="#16a34a" opacity="0.8" />
+                    {/* South America */}
+                    <circle cx="60" cy="120" r="8" fill="#16a34a" opacity="0.7" />
+                    {/* Europe */}
+                    <circle cx="100" cy="50" r="10" fill="#16a34a" opacity="0.8" />
+                    {/* Asia */}
+                    <circle cx="130" cy="70" r="14" fill="#16a34a" opacity="0.8" />
+                    {/* Africa */}
+                    <circle cx="110" cy="100" r="9" fill="#16a34a" opacity="0.7" />
+                    {/* Australia */}
+                    <circle cx="140" cy="130" r="7" fill="#16a34a" opacity="0.7" />
+                  </svg>
+                </div>
+
+                {/* Animated location pins */}
+                <div className="absolute top-12 left-12 animate-bounce" style={{ animationDelay: "0s" }}>
+                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg" />
+                </div>
+                <div className="absolute top-20 right-16 animate-bounce" style={{ animationDelay: "0.5s" }}>
+                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg" />
+                </div>
+                <div className="absolute bottom-24 left-20 animate-bounce" style={{ animationDelay: "1s" }}>
+                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg" />
+                </div>
+                <div className="absolute bottom-12 right-12 animate-bounce" style={{ animationDelay: "1.5s" }}>
+                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg" />
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Location stats */}
+            <div className="space-y-4">
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0s" }}>
+                <div className="flex items-start gap-3">
+                  <div className="text-2xl">🇺🇸</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-navy text-sm">North America</h3>
+                    <p className="text-xs text-slate-600">8+ hackathons • Google, Meta, OpenAI, Anthropic</p>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-2">
+                      <div className="bg-green-500 h-2 rounded-full" style={{ width: "40%" }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.1s" }}>
+                <div className="flex items-start gap-3">
+                  <div className="text-2xl">🇪🇺</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-navy text-sm">Europe</h3>
+                    <p className="text-xs text-slate-600">5+ hackathons • Stanford, Tech conferences</p>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-2">
+                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: "25%" }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.2s" }}>
+                <div className="flex items-start gap-3">
+                  <div className="text-2xl">🌏</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-navy text-sm">Asia Pacific</h3>
+                    <p className="text-xs text-slate-600">4+ hackathons • AI innovation hub</p>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-2">
+                      <div className="bg-purple-500 h-2 rounded-full" style={{ width: "20%" }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-orange-50 to-yellow-50 border border-orange-200 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.3s" }}>
+                <div className="flex items-start gap-3">
+                  <div className="text-2xl">🌐</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-navy text-sm">Global · Virtual</h3>
+                    <p className="text-xs text-slate-600">4+ fully remote • Open to everyone worldwide</p>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-2">
+                      <div className="bg-orange-500 h-2 rounded-full" style={{ width: "20%" }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* AI Insights strip */}
         <section className="border-y border-slate-200 bg-navy/[0.02] py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
