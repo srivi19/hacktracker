@@ -154,75 +154,6 @@ export default function DashboardPage() {
       <Header />
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full">
-        {/* AI Insights Hero - FIRST on page */}
-        {tab === "hackathons" && (
-          <div className="mb-12 bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-emerald-950/30 dark:to-blue-950/30 rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 p-10">
-            <div className="flex items-start justify-between mb-8">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
-                    <Zap size={28} className="text-white" />
-                  </div>
-                  <div>
-                    <h2 className="text-4xl font-black text-navy dark:text-white">What Actually Wins</h2>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Real patterns from 50+ hackathon winners analyzed by Gemini AI</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Colorful insight blocks */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                {
-                  icon: "🏆",
-                  title: "Chrome Extension + AI",
-                  description: "is the highest-win combo for Micro-SaaS brackets",
-                  color: "from-pink-500 to-rose-500"
-                },
-                {
-                  icon: "⚡",
-                  title: "90-Second Demos",
-                  description: "score 40% higher on execution speed",
-                  color: "from-yellow-500 to-orange-500"
-                },
-                {
-                  icon: "🏥",
-                  title: "Healthcare AI",
-                  description: "wins are about UX, not model accuracy",
-                  color: "from-blue-500 to-cyan-500"
-                },
-                {
-                  icon: "🎯",
-                  title: "Meta Tools",
-                  description: "score unusually high on Originality",
-                  color: "from-purple-500 to-pink-500"
-                },
-                {
-                  icon: "🚀",
-                  title: "Next.js + Railway",
-                  description: "fastest deployment. Judges need a live URL.",
-                  color: "from-green-500 to-emerald-500"
-                },
-                {
-                  icon: "👥",
-                  title: "Teams of 2-3",
-                  description: "outperform solo and 4+ on execution",
-                  color: "from-indigo-500 to-blue-500"
-                }
-              ].map((block, i) => (
-                <div
-                  key={i}
-                  className={`bg-gradient-to-br ${block.color} rounded-xl p-6 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer`}
-                >
-                  <div className="text-4xl mb-3">{block.icon}</div>
-                  <h3 className="text-lg font-black mb-2">{block.title}</h3>
-                  <p className="text-sm font-medium text-white/90">{block.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Page header */}
         <div className="flex items-start justify-between mb-6">
@@ -416,6 +347,37 @@ export default function DashboardPage() {
         {/* AI Insights tab - GRAND & VISUAL */}
         {tab === "insights" && (
           <div>
+            {/* Colorful Insight Blocks - FIRST */}
+            <div className="mb-12 bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-emerald-950/30 dark:to-blue-950/30 rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 p-10">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+                  <Zap size={28} className="text-white" />
+                </div>
+                <div>
+                  <h2 className="text-4xl font-black text-navy dark:text-white">What Actually Wins</h2>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Real patterns from 50+ hackathon winners analyzed by Gemini AI</p>
+                </div>
+              </div>
+
+              {/* Colorful insight blocks */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { icon: "🏆", title: "Chrome Extension + AI", description: "is the highest-win combo for Micro-SaaS brackets", color: "from-pink-500 to-rose-500" },
+                  { icon: "⚡", title: "90-Second Demos", description: "score 40% higher on execution speed", color: "from-yellow-500 to-orange-500" },
+                  { icon: "🏥", title: "Healthcare AI", description: "wins are about UX, not model accuracy", color: "from-blue-500 to-cyan-500" },
+                  { icon: "🎯", title: "Meta Tools", description: "score unusually high on Originality", color: "from-purple-500 to-pink-500" },
+                  { icon: "🚀", title: "Next.js + Railway", description: "fastest deployment. Judges need a live URL.", color: "from-green-500 to-emerald-500" },
+                  { icon: "👥", title: "Teams of 2-3", description: "outperform solo and 4+ on execution", color: "from-indigo-500 to-blue-500" }
+                ].map((block, i) => (
+                  <div key={i} className={`bg-gradient-to-br ${block.color} rounded-xl p-6 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200`}>
+                    <div className="text-4xl mb-3">{block.icon}</div>
+                    <h3 className="text-lg font-black mb-2">{block.title}</h3>
+                    <p className="text-sm font-medium text-white/90">{block.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Header Section */}
             <div className="mb-10 bg-gradient-to-r from-green-50 dark:from-green-950/30 to-blue-50 dark:to-blue-950/30 rounded-2xl border-2 border-green-200 dark:border-green-800 p-8 transition-colors">
               <div className="flex items-start justify-between">
