@@ -12,7 +12,7 @@ const FEATURE_TAGS = [
 ];
 
 const STATS = [
-  { label: "Active Hackathons", value: "8+" },
+  { label: "Active Hackathons", value: "21+" },
   { label: "Prize Pool Tracked", value: "$2M+" },
   { label: "Winning Projects", value: "50+" },
   { label: "AI Summaries", value: "100%" },
@@ -33,7 +33,7 @@ export default function HomePage() {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-200 bg-green-50 text-green-700 text-xs font-semibold mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              8 hackathons open right now
+              21 hackathons tracked right now
             </div>
 
             {/* Main title — matching Market Gap AI large bold style */}
