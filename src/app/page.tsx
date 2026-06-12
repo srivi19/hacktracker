@@ -28,7 +28,6 @@ export default function HomePage() {
         {/* Top row floating elements */}
         <div className="absolute top-10 left-8 text-5xl animate-bounce" style={{ animationDelay: "0s", animationDuration: "3.5s" }}>🏆</div>
         <div className="absolute top-24 left-1/4 text-4xl animate-pulse">⭐</div>
-        <div className="absolute top-16 right-1/4 text-5xl animate-bounce" style={{ animationDelay: "1.5s", animationDuration: "3s" }}>💻</div>
         <div className="absolute top-32 right-10 text-4xl animate-pulse" style={{ animationDelay: "0.5s" }}>🚀</div>
 
         {/* Middle floating elements */}
@@ -95,12 +94,12 @@ export default function HomePage() {
             </h1>
 
             {/* Subtitle — italic like Market Gap AI */}
-            <p className="text-lg sm:text-xl text-slate-500 italic font-light max-w-2xl mx-auto mb-3">
+            <p className="text-lg sm:text-xl text-slate-500 dark:text-slate-300 italic font-light max-w-2xl mx-auto mb-3">
               One hub for every AI hackathon. Know what&apos;s open,
               <br className="hidden sm:block" /> what wins, and never miss a deadline again.
             </p>
 
-            <p className="text-xs text-slate-400 mb-8">
+            <p className="text-xs text-slate-400 dark:text-slate-500 mb-8">
               Powered by Devpost · Gemini AI · Real-time deadline tracking.
             </p>
 
@@ -132,12 +131,12 @@ export default function HomePage() {
         </section>
 
         {/* Stats bar */}
-        <section className="border-y border-slate-200 bg-white/60">
+        <section className="border-y border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-800/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {STATS.map((s, i) => (
               <div key={s.label} className="animate-fadeInUp" style={{ animationDelay: `${i * 0.1}s` }}>
-                <p className="text-2xl sm:text-3xl font-black text-navy hover:text-accent transition-colors">{s.value}</p>
-                <p className="text-xs text-slate-500 mt-0.5 uppercase tracking-wide font-medium">{s.label}</p>
+                <p className="text-2xl sm:text-3xl font-black text-navy dark:text-white hover:text-accent transition-colors">{s.value}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 uppercase tracking-wide font-medium">{s.label}</p>
               </div>
             ))}
           </div>
@@ -147,8 +146,8 @@ export default function HomePage() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-black text-navy tracking-tight">Featured Hackathons</h2>
-              <p className="text-slate-500 text-sm mt-1">AI-summarized, deadline-sorted, prize-filtered</p>
+              <h2 className="text-2xl font-black text-navy dark:text-white tracking-tight">Featured Hackathons</h2>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">AI-summarized, deadline-sorted, prize-filtered</p>
             </div>
             <Link
               href="/dashboard"
@@ -175,10 +174,10 @@ export default function HomePage() {
                   <span className="text-xs font-bold text-accent">{h.prize_pool}</span>
                 </div>
 
-                <h3 className="font-bold text-navy text-sm leading-snug mb-2 group-hover:text-accent transition-colors">
+                <h3 className="font-bold text-navy dark:text-white text-sm leading-snug mb-2 group-hover:text-accent transition-colors">
                   {h.title}
                 </h3>
-                <p className="text-xs text-slate-500 italic mb-3">&quot;{h.summary}&quot;</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 italic mb-3">&quot;{h.summary}&quot;</p>
 
                 <div className="flex flex-wrap gap-1 mb-3">
                   {h.tech_tags.slice(0, 3).map((tag) => (
@@ -186,7 +185,7 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between text-[10px] text-slate-400 pt-3 border-t border-slate-100">
+                <div className="flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 pt-3 border-t border-slate-100 dark:border-slate-700">
                   <span className="flex items-center gap-1">
                     <Calendar size={10} /> {new Date(h.deadline).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                   </span>
@@ -203,10 +202,10 @@ export default function HomePage() {
         {/* Global Reach Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-black text-navy tracking-tight mb-2">
+            <h2 className="text-2xl font-black text-navy dark:text-white tracking-tight mb-2">
               🌍 Hackathons from Around the World
             </h2>
-            <p className="text-slate-500 text-sm">Opportunities across North America, Europe, Asia, and beyond</p>
+            <p className="text-slate-500 dark:text-slate-400 text-sm">Opportunities across North America, Europe, Asia, and beyond</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -214,24 +213,55 @@ export default function HomePage() {
             <div className="flex justify-center">
               <div className="relative w-80 h-80">
                 {/* Animated globe background */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 border-2 border-blue-200 shadow-xl animate-float" style={{ animationDuration: "6s" }}>
-                  {/* Continents representation - simplified */}
-                  <svg className="w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="#cbd5e1" strokeWidth="1" opacity="0.3" />
-                    <circle cx="100" cy="100" r="85" fill="none" stroke="#cbd5e1" strokeWidth="1" opacity="0.2" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-300 to-blue-100 border-2 border-blue-400 shadow-2xl animate-float" style={{ animationDuration: "8s" }}>
+                  {/* Realistic Earth Map */}
+                  <svg className="w-full h-full" viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg">
+                    {/* Ocean background */}
+                    <circle cx="180" cy="90" r="95" fill="#0369a1" opacity="0.3" />
+
+                    {/* Continents - Simplified but recognizable shapes */}
 
                     {/* North America */}
-                    <circle cx="50" cy="60" r="12" fill="#16a34a" opacity="0.8" />
+                    <path d="M 50 50 L 65 55 L 70 45 L 75 50 L 75 70 L 70 80 L 55 75 L 50 65 Z" fill="#059669" opacity="0.9" />
+
                     {/* South America */}
-                    <circle cx="60" cy="120" r="8" fill="#16a34a" opacity="0.7" />
+                    <path d="M 60 75 L 70 78 L 72 95 L 68 110 L 60 105 L 58 90 Z" fill="#10b981" opacity="0.85" />
+
+                    {/* Greenland */}
+                    <path d="M 90 35 L 95 38 L 93 48 L 88 45 Z" fill="#059669" opacity="0.8" />
+
                     {/* Europe */}
-                    <circle cx="100" cy="50" r="10" fill="#16a34a" opacity="0.8" />
-                    {/* Asia */}
-                    <circle cx="130" cy="70" r="14" fill="#16a34a" opacity="0.8" />
+                    <path d="M 100 45 L 115 48 L 118 58 L 110 62 L 100 58 Z" fill="#059669" opacity="0.9" />
+
                     {/* Africa */}
-                    <circle cx="110" cy="100" r="9" fill="#16a34a" opacity="0.7" />
+                    <path d="M 110 60 L 130 58 L 135 75 L 133 100 L 125 108 L 110 105 L 108 80 Z" fill="#10b981" opacity="0.9" />
+
+                    {/* Middle East */}
+                    <path d="M 120 55 L 135 58 L 138 75 L 125 75 Z" fill="#059669" opacity="0.85" />
+
+                    {/* Asia */}
+                    <path d="M 130 45 L 160 48 L 165 65 L 150 78 L 135 75 L 130 60 Z" fill="#059669" opacity="0.9" />
+
+                    {/* Southeast Asia */}
+                    <path d="M 155 70 L 165 72 L 168 85 L 160 88 L 155 80 Z" fill="#10b981" opacity="0.85" />
+
                     {/* Australia */}
-                    <circle cx="140" cy="130" r="7" fill="#16a34a" opacity="0.7" />
+                    <path d="M 160 100 L 175 102 L 178 115 L 165 118 L 160 110 Z" fill="#059669" opacity="0.85" />
+
+                    {/* New Zealand */}
+                    <path d="M 180 115 L 185 117 L 183 125 L 178 122 Z" fill="#10b981" opacity="0.8" />
+
+                    {/* Russia */}
+                    <path d="M 135 42 L 165 40 L 168 55 L 150 58 L 135 52 Z" fill="#059669" opacity="0.85" />
+
+                    {/* Japan */}
+                    <circle cx="170" cy="55" r="3" fill="#059669" opacity="0.8" />
+
+                    {/* Latitude/Longitude grid - subtle */}
+                    <circle cx="180" cy="90" r="95" fill="none" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.2" />
+                    <circle cx="180" cy="90" r="85" fill="none" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.15" />
+                    <line x1="180" y1="0" x2="180" y2="180" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.1" />
+                    <line x1="0" y1="90" x2="360" y2="90" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.1" />
                   </svg>
                 </div>
 
@@ -253,52 +283,52 @@ export default function HomePage() {
 
             {/* Right: Location stats */}
             <div className="space-y-4">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0s" }}>
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-700 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0s" }}>
                 <div className="flex items-start gap-3">
                   <div className="text-2xl">🇺🇸</div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-navy text-sm">North America</h3>
-                    <p className="text-xs text-slate-600">8+ hackathons • Google, Meta, OpenAI, Anthropic</p>
-                    <div className="mt-2 w-full bg-slate-200 rounded-full h-2">
+                    <h3 className="font-bold text-navy dark:text-white text-sm">North America</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">8+ hackathons • Google, Meta, OpenAI, Anthropic</p>
+                    <div className="mt-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                       <div className="bg-green-500 h-2 rounded-full" style={{ width: "40%" }} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.1s" }}>
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.1s" }}>
                 <div className="flex items-start gap-3">
                   <div className="text-2xl">🇪🇺</div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-navy text-sm">Europe</h3>
-                    <p className="text-xs text-slate-600">5+ hackathons • Stanford, Tech conferences</p>
-                    <div className="mt-2 w-full bg-slate-200 rounded-full h-2">
+                    <h3 className="font-bold text-navy dark:text-white text-sm">Europe</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">5+ hackathons • Stanford, Tech conferences</p>
+                    <div className="mt-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                       <div className="bg-blue-500 h-2 rounded-full" style={{ width: "25%" }} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.2s" }}>
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-200 dark:border-purple-700 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.2s" }}>
                 <div className="flex items-start gap-3">
                   <div className="text-2xl">🌏</div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-navy text-sm">Asia Pacific</h3>
-                    <p className="text-xs text-slate-600">4+ hackathons • AI innovation hub</p>
-                    <div className="mt-2 w-full bg-slate-200 rounded-full h-2">
+                    <h3 className="font-bold text-navy dark:text-white text-sm">Asia Pacific</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">4+ hackathons • AI innovation hub</p>
+                    <div className="mt-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                       <div className="bg-purple-500 h-2 rounded-full" style={{ width: "20%" }} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-orange-50 to-yellow-50 border border-orange-200 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.3s" }}>
+              <div className="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 border border-orange-200 dark:border-orange-700 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0.3s" }}>
                 <div className="flex items-start gap-3">
                   <div className="text-2xl">🌐</div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-navy text-sm">Global · Virtual</h3>
-                    <p className="text-xs text-slate-600">4+ fully remote • Open to everyone worldwide</p>
-                    <div className="mt-2 w-full bg-slate-200 rounded-full h-2">
+                    <h3 className="font-bold text-navy dark:text-white text-sm">Global · Virtual</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">4+ fully remote • Open to everyone worldwide</p>
+                    <div className="mt-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                       <div className="bg-orange-500 h-2 rounded-full" style={{ width: "20%" }} />
                     </div>
                   </div>
@@ -313,7 +343,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex items-center gap-2 mb-6">
               <Zap size={16} className="text-accent" />
-              <h2 className="text-sm font-black text-navy uppercase tracking-widest">
+              <h2 className="text-sm font-black text-navy dark:text-white uppercase tracking-widest">
                 Winning Intelligence
               </h2>
               <span className="chip-green text-[10px]">Gemini-powered</span>
@@ -322,7 +352,7 @@ export default function HomePage() {
               {AI_INSIGHTS.map((insight, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-slate-200 rounded-lg px-4 py-3 text-xs text-slate-700 hover:border-green-300 hover:shadow-lg transition-all animate-fadeInUp"
+                  className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 text-xs text-slate-700 dark:text-slate-300 hover:border-green-300 dark:hover:border-green-600 hover:shadow-lg transition-all animate-fadeInUp"
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >
                   {insight}
@@ -335,10 +365,10 @@ export default function HomePage() {
         {/* Feature grid */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-black text-navy tracking-tight mb-2">
+            <h2 className="text-2xl font-black text-navy dark:text-white tracking-tight mb-2">
               Why Builders Use AIHackTracker
             </h2>
-            <p className="text-slate-500 text-sm">Saves 5+ hours of searching. Gives you the edge.</p>
+            <p className="text-slate-500 dark:text-slate-400 text-sm">Saves 5+ hours of searching. Gives you the edge.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -364,12 +394,12 @@ export default function HomePage() {
                 desc: "48-hour email warnings for hackathons you starred. Never miss a deadline again.",
               },
             ].map((f, i) => (
-              <div key={f.title} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-green-300 hover:shadow-lg transition-all animate-fadeInUp group" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center text-accent mb-3 group-hover:bg-green-100 transition-colors">
+              <div key={f.title} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:border-green-300 dark:hover:border-green-600 hover:shadow-lg transition-all animate-fadeInUp group" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className="w-9 h-9 rounded-lg bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-accent mb-3 group-hover:bg-green-100 dark:group-hover:bg-green-900/50 transition-colors">
                   {f.icon}
                 </div>
-                <h3 className="font-bold text-navy text-sm mb-1 group-hover:text-accent transition-colors">{f.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
+                <h3 className="font-bold text-navy dark:text-white text-sm mb-1 group-hover:text-accent transition-colors">{f.title}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
