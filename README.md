@@ -1,27 +1,54 @@
 # AIHackTracker 🚀
 
-The AI Hackathon Intelligence Platform — Discover, track, and learn from the best AI hackathons happening now.
+> **The AI Hackathon Intelligence Platform** — Discover, track, and learn from the best AI hackathons happening now.
+> 
+> *Built with ❤️ for the Mind the Product Hackathon 2026*
 
-**Live:** https://hacktracker-production.up.railway.app/
+**Live:** https://hacktracker-production.up.railway.app/  
+**Deadline:** June 20, 2026 · 8 days remaining  
+**Builder:** Vi (Srividya Narayanan) · [Contact](mailto:srividya.chandra@gmail.com)
 
-**Project Info:** Mind the Product Hackathon 2026 · June 20 deadline
-**Builder:** Vi (Srividya Narayanan)
+---
+
+## System Architecture
+
+```mermaid
+graph TB
+    A[User Browser] -->|HTTP| B[Next.js Frontend]
+    B -->|API Calls| C[Supabase PostgreSQL]
+    B -->|Tracking| D[Novus.ai Analytics]
+    C -->|pg_cron| E[Auto-Refresh<br/>Every 10 Days]
+    D -->|Slack Integration| F[Judge Notifications]
+    B -->|AI Summaries| G[Gemini 1.5 Flash]
+    
+    B -->|Dark Mode| H[Tailwind CSS]
+    C -->|RLS Policies| I[Public Read Access]
+    
+    style B fill:#10b981
+    style C fill:#3b82f6
+    style D fill:#f59e0b
+    style F fill:#8b5cf6
+```
 
 ---
 
 ## What is AIHackTracker?
 
-AIHackTracker aggregates AI hackathons from across the internet, provides deadline tracking, calendar views, and winning project intelligence to help you find and win your next hackathon.
+AIHackTracker is a one-stop intelligence hub for AI hackathons. It aggregates opportunities, tracks deadlines, analyzes winning patterns, and provides live analytics to help you find and **win** your next hackathon.
 
-### Features
+### Key Features
 
-- **🎯 Curated Hackathons** — 8+ current AI hackathons with real-time status tracking
-- **📅 Calendar View** — Visualize deadlines across months
-- **🏆 Winning Projects** — Learn from past winners and what made them win
-- **💰 Prize Tracking** — See the total prize pool and breakdown
-- **📊 Live Analytics** — Track platform usage with Novus.ai
-- **⚡ Lightning Fast** — Next.js + Railway deployment = instant load times
-- **♻️ Auto-Refresh** — Database updates every 10 days automatically (pg_cron)
+| Feature | Description | Impact |
+|---------|-------------|--------|
+| **🎯 Curated Directory** | 8+ current AI hackathons with real-time status | Never miss a deadline |
+| **📅 Calendar View** | Visualize all deadlines on an interactive calendar | Plan your schedule |
+| **🏆 Winning Intelligence** | Analysis of 50+ past winners and patterns | Learn what judges reward |
+| **💰 Prize Insights** | $112,500+ total prize pool tracked | Maximize opportunities |
+| **📊 Live Analytics** | Real-time Novus.ai tracking via Slack | See who's using it |
+| **🌙 Dark Mode** | Eye-friendly night mode with toggle | Code-friendly theme |
+| **🗓️ Calendar Export** | Add deadlines to Google Calendar instantly | Never forget a date |
+| **⚡ Lightning Fast** | Next.js + Supabase + Railway | Instant load times |
+| **♻️ Auto-Refresh** | pg_cron updates every 10 days | Always up-to-date |
 
 ---
 
@@ -278,8 +305,42 @@ MIT License — feel free to use this as a template for your own hackathon proje
 
 ---
 
-**Built for Mind the Product Hackathon 2026**
-**Deadline: June 20, 2026**
-**Deployed on Railway** | **Database on Supabase** | **Tracked by Novus.ai**
+## Data Flow Diagram
+
+```mermaid
+sequenceDiagram
+    participant Judge as Judge
+    participant Browser as Browser
+    participant API as API Route
+    participant Supabase as Supabase
+    participant Novus as Novus Analytics
+    participant Slack as Slack Channel
+    
+    Judge->>Browser: Visit app
+    activate Browser
+    Browser->>Novus: Track pageview
+    Novus->>Slack: New visitor detected
+    
+    Judge->>Browser: Click on hackathon
+    Browser->>API: Fetch hackathons
+    API->>Supabase: Query database
+    Supabase->>API: Return live data
+    API->>Browser: JSON response
+    Browser->>Novus: Track click event
+    Novus->>Slack: 🖱️ Click event recorded
+    
+    deactivate Browser
+```
+
+---
+
+## 📝 Built with ❤️
+
+**By:** Vi (Srividya Narayanan)  
+**For:** Mind the Product Hackathon 2026  
+**Deadline:** June 20, 2026  
+**Status:** 🟢 Live & Production-Ready
+
+**Stack:** Next.js 14 · React 18 · TypeScript · Tailwind CSS · Supabase · Gemini AI · Novus Analytics · Railway
 
 Last updated: June 12, 2026

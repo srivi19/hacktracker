@@ -1,10 +1,50 @@
 # AIHackTracker — Architecture & Data Flow
 
-Built by Vi for Mind the Product Hackathon 2026
+**Built with ❤️ by Vi (Srividya Narayanan) for Mind the Product Hackathon 2026**
 
 ---
 
 ## System Overview
+
+```mermaid
+graph LR
+    subgraph "Frontend Layer"
+        A1["🖥️ Next.js 14<br/>React 18"]
+        A2["🎨 Tailwind CSS<br/>Dark Mode"]
+        A3["📊 Novus.ai SDK"]
+    end
+    
+    subgraph "API Layer"
+        B1["🔌 API Routes<br/>route.ts"]
+    end
+    
+    subgraph "Data Layer"
+        C1["🗄️ Supabase<br/>PostgreSQL"]
+        C2["⏰ pg_cron<br/>Auto-Refresh"]
+    end
+    
+    subgraph "Analytics & Alerts"
+        D1["📈 Novus Analytics"]
+        D2["💬 Slack Integration"]
+    end
+    
+    subgraph "AI Services"
+        E1["🤖 Gemini 1.5 Flash"]
+    end
+    
+    A1 --> B1
+    B1 --> C1
+    C1 --> C2
+    A1 --> A3
+    A3 --> D1
+    D1 --> D2
+    B1 --> E1
+    
+    style A1 fill:#10b981
+    style C1 fill:#3b82f6
+    style D1 fill:#f59e0b
+    style E1 fill:#8b5cf6
+```
 
 AIHackTracker is a Next.js-based web application that aggregates hackathon opportunities from across the internet, provides AI-generated summaries, tracks deadlines, and supplies winning project intelligence via Novus.ai analytics.
 
@@ -60,6 +100,47 @@ If Supabase is unavailable, the API falls back to **static seed data** in `src/l
 - Response includes `"source": "supabase"` or `"source": "static-fallback"` to help debugging
 
 ### Database Schema
+
+```mermaid
+erDiagram
+    HACKATHONS ||--o{ WINNERS : "references"
+    HACKATHONS ||--o{ USER_ALERTS : "references"
+    
+    HACKATHONS {
+        text id PK
+        text title
+        text organizer
+        text url
+        timestamptz deadline
+        text prize_pool
+        text status
+        text category
+        int participants
+        boolean featured
+        timestamptz created_at
+    }
+    
+    WINNERS {
+        text id PK
+        text hackathon_title
+        int hackathon_year
+        text project_name
+        text prize_won
+        text[] tech_stack
+        text description
+        text url
+        timestamptz created_at
+    }
+    
+    USER_ALERTS {
+        uuid id PK
+        text email
+        text[] categories
+        text[] tech_tags
+        boolean active
+        timestamptz created_at
+    }
+```
 
 **`public.hackathons` table:**
 ```sql
@@ -379,6 +460,23 @@ Deploy from GitHub → Railway automatically on push
 
 ---
 
-**Last Updated:** June 12, 2026
-**Version:** 1.0 (Supabase + pg_cron)
-**Author:** Vi (Srividya Narayanan)
+---
+
+## 📝 Built with ❤️
+
+**Author:** Vi (Srividya Narayanan)  
+**Project:** AIHackTracker for Mind the Product Hackathon 2026  
+**Version:** 1.0 (Supabase + pg_cron + Novus Analytics)  
+**Last Updated:** June 12, 2026  
+**Status:** 🟢 Production Ready
+
+**Technologies Used:**
+- Frontend: Next.js 14, React 18, TypeScript, Tailwind CSS
+- Backend: Node.js, PostgreSQL (Supabase)
+- Database: Supabase with pg_cron, Row-Level Security
+- AI: Google Gemini 1.5 Flash
+- Analytics: Novus.ai with Slack integration
+- Deployment: Railway
+- Hosting: Railway (Free tier)
+
+**Special Thanks:** Mind the Product team for the opportunity to build something meaningful! 🙌
