@@ -19,10 +19,21 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+html.dark body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
 /* Dot grid background — matches Market Gap AI */
 .dot-grid-bg {
   background-color: #f8fafc;
   background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+html.dark .dot-grid-bg {
+  background-color: #0f172a;
+  background-image: radial-gradient(circle, #475569 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
@@ -74,6 +85,10 @@ body {
 ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
+html.dark ::-webkit-scrollbar-track { background: #1e293b; }
+html.dark ::-webkit-scrollbar-thumb { background: #475569; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
 /* Countdown urgency */
 .urgency-high { @apply text-red-600 font-semibold; }
 .urgency-med { @apply text-orange-600 font-semibold; }
@@ -95,12 +110,25 @@ body {
   letter-spacing: 0.5px;
 }
 
+html.dark .rbc-header {
+  color: #f1f5f9;
+  border-bottom-color: #334155;
+}
+
 .rbc-today {
   background-color: #f0fdf4;
 }
 
+html.dark .rbc-today {
+  background-color: #064e3b;
+}
+
 .rbc-off-range-bg {
   background-color: #f8fafc;
+}
+
+html.dark .rbc-off-range-bg {
+  background-color: #1e293b;
 }
 
 .rbc-event {
@@ -120,6 +148,11 @@ body {
 .rbc-day-bg,
 .rbc-time-slot {
   border-color: #e2e8f0;
+}
+
+html.dark .rbc-day-bg,
+html.dark .rbc-time-slot {
+  border-color: #334155;
 }
 
 .rbc-toolbar {
@@ -145,9 +178,20 @@ body {
   letter-spacing: 0.5px;
 }
 
+html.dark .rbc-toolbar button {
+  border-color: #475569;
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+
 .rbc-toolbar button:hover {
   border-color: #16a34a;
   color: #16a34a;
+}
+
+html.dark .rbc-toolbar button:hover {
+  border-color: #22c55e;
+  color: #22c55e;
 }
 
 .rbc-toolbar button.rbc-active {
@@ -156,11 +200,22 @@ body {
   border-color: #16a34a;
 }
 
+html.dark .rbc-toolbar button.rbc-active {
+  background-color: #22c55e;
+  color: #0f172a;
+  border-color: #22c55e;
+}
+
 .rbc-month-view,
 .rbc-time-view {
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   overflow: hidden;
+}
+
+html.dark .rbc-month-view,
+html.dark .rbc-time-view {
+  border-color: #334155;
 }
 
 .rbc-date-cell {
@@ -174,6 +229,14 @@ body {
   font-weight: 600;
 }
 
+html.dark .rbc-date-cell > a {
+  color: #f1f5f9;
+}
+
 .rbc-date-cell.rbc-off-range > a {
   color: #cbd5e1;
+}
+
+html.dark .rbc-date-cell.rbc-off-range > a {
+  color: #64748b;
 }
