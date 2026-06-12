@@ -36,13 +36,23 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Novus.ai analytics tracking */}
-        <Script id="novus-config" strategy="beforeInteractive">
-          {`window.novusConfig = { appId: "17eb64f6-abe5-499b-bf3d-0bb31a5ede74" };`}
-        </Script>
+        {/* Novus.ai analytics tracking - FIXED domain + initialization */}
         <Script
-          src="https://novus.pendio.io/sdk/web.js"
+          src="https://novus.pendo.io/sdk/web.js"
           strategy="afterInteractive"
+          onLoad={() => {
+            if (window.pendo) {
+              window.pendo.initialize({
+                visitor: {
+                  id: "aihacktracker-user",
+                  email: "judges@aihacktracker.dev"
+                },
+                account: {
+                  id: "aihacktracker-prod"
+                }
+              });
+            }
+          }}
         />
       </head>
       <body className="antialiased bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">{children}</body>
