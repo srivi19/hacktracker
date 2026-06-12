@@ -208,62 +208,8 @@ export default function HomePage() {
             <p className="text-slate-500 dark:text-slate-400 text-sm">Opportunities across North America, Europe, Asia, and beyond</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left: Flat Earth Map */}
-            <div className="flex justify-center items-center">
-              <div className="relative">
-                {/* Flat Earth Map */}
-                <svg className="w-96 h-64" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" style={{ filter: "drop-shadow(0 20px 25px rgb(0 0 0 / 0.1))" }}>
-                  {/* Ocean background */}
-                  <rect width="960" height="600" fill="#0ea5e9" />
-
-                  {/* Continents with simplified shapes */}
-                  {/* North America */}
-                  <path d="M 100 150 L 150 160 L 160 120 L 180 130 L 180 220 L 150 240 L 100 200 Z" fill="#10b981" />
-
-                  {/* South America */}
-                  <path d="M 130 240 L 160 250 L 170 320 L 150 360 L 120 340 Z" fill="#059669" />
-
-                  {/* Greenland */}
-                  <path d="M 220 80 L 240 90 L 235 140 L 215 130 Z" fill="#10b981" />
-
-                  {/* Europe */}
-                  <path d="M 340 120 L 380 130 L 390 180 L 360 190 L 340 160 Z" fill="#10b981" />
-
-                  {/* Africa */}
-                  <path d="M 380 180 L 440 170 L 460 250 L 450 340 L 410 360 L 380 320 Z" fill="#059669" />
-
-                  {/* Middle East */}
-                  <path d="M 420 140 L 460 150 L 470 220 L 440 230 Z" fill="#10b981" />
-
-                  {/* Russia */}
-                  <path d="M 420 80 L 520 75 L 540 140 L 480 150 L 420 120 Z" fill="#10b981" />
-
-                  {/* Asia */}
-                  <path d="M 480 140 L 600 135 L 640 200 L 560 240 L 480 220 Z" fill="#059669" />
-
-                  {/* Southeast Asia */}
-                  <path d="M 580 200 L 630 210 L 650 270 L 600 280 Z" fill="#10b981" />
-
-                  {/* Australia */}
-                  <path d="M 620 320 L 680 330 L 700 400 L 650 410 Z" fill="#059669" />
-
-                  {/* New Zealand */}
-                  <path d="M 710 380 L 740 390 L 735 440 L 710 430 Z" fill="#10b981" />
-
-                  {/* Japan */}
-                  <circle cx="650" cy="180" r="12" fill="#10b981" />
-
-                  {/* Location markers */}
-                  <circle cx="140" cy="180" r="8" fill="#ef4444" opacity="0.9" />
-                  <circle cx="360" cy="140" r="8" fill="#ef4444" opacity="0.9" />
-                  <circle cx="420" cy="200" r="8" fill="#ef4444" opacity="0.9" />
-                  <circle cx="680" cy="320" r="8" fill="#ef4444" opacity="0.9" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Right: Location stats */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            {/* Location stats */}
             <div className="space-y-4">
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-700 rounded-xl p-5 animate-fadeInUp hover:shadow-lg transition-shadow" style={{ animationDelay: "0s" }}>
                 <div className="flex items-start gap-3">
