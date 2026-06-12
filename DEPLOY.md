@@ -18,13 +18,33 @@ cp .env.local.example .env.local
 # Fill in your Gemini API key (already set) and Supabase keys
 ```
 
-## 3. Set up Supabase (5 min)
+## 3. Set up Supabase (10 min, includes auto-refresh)
 
+### Step A: Create project
 1. Go to https://supabase.com and create a free project
-2. Go to **SQL Editor** → **New Query**
-3. Paste the contents of `supabase/schema.sql` → click **Run**
-4. Go to **Project Settings → API**
-5. Copy **Project URL** and **anon key** into `.env.local`
+2. Wait for project to initialize (2-3 minutes)
+
+### Step B: Create schema
+1. Go to **SQL Editor** → **New Query**
+2. Copy contents of `supabase/schema.sql` and **Run**
+
+### Step C: Insert hackathon data
+1. Go to **SQL Editor** → **New Query**
+2. Copy contents of `supabase/migrations/insert_current_hackathons.sql` and **Run**
+
+### Step D: Set up auto-refresh (every 10 days)
+1. Go to **SQL Editor** → **New Query**
+2. Copy contents of `supabase/migrations/setup_cron_refresh.sql` and **Run**
+   - This enables pg_cron and schedules daily status updates
+   - Automatically marks hackathons as closing_soon, open, or closed based on deadline
+
+### Step E: Get credentials
+1. Go to **Project Settings → API**
+2. Copy **Project URL** and **anon key** into `.env.local`:
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=your_url_here
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key_here
+   ```
 
 ## 4. Run locally
 

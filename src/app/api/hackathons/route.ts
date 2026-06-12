@@ -8,6 +8,7 @@ export async function GET(request: Request) {
   const status = searchParams.get("status");
 
   try {
+    // PRIMARY: Try Supabase first
     if (supabase) {
       let query = supabase
         .from("hackathons")
@@ -24,22 +25,29 @@ export async function GET(request: Request) {
           hackathons: data,
           source: "supabase",
           count: data.length,
+          lastUpdated: new Date().toISOString(),
         });
       }
     }
 
-    // Fallback to static seed data
+    // FALLBACK: Use static seed data only if Supabase fails
+    console.warn("Supabase fetch failed or returned no data, falling back to static data");
     let results = [...HACKATHONS];
     if (category && category !== "All") results = results.filter((h) => h.category === category);
     if (status && status !== "All") results = results.filter((h) => h.status === status);
 
     return NextResponse.json({
       hackathons: results,
-      source: "static",
+      source: "static-fallback",
       count: results.length,
+      lastUpdated: new Date().toISOString(),
     });
   } catch (err) {
     console.error("Hackathons API error:", err);
-    return NextResponse.json({ hackathons: HACKATHONS, source: "static-fallback" });
+    return NextResponse.json({
+      hackathons: HACKATHONS,
+      source: "static-fallback",
+      error: "Failed to fetch from Supabase, using static data"
+    });
   }
 }
