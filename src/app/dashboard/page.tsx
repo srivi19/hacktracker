@@ -150,15 +150,85 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col dot-grid-bg">
+    <div className="min-h-screen flex flex-col dot-grid-bg dark:dot-grid-bg-dark">
       <Header />
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full">
+        {/* AI Insights Hero - FIRST on page */}
+        {tab === "hackathons" && (
+          <div className="mb-12 bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-emerald-950/30 dark:to-blue-950/30 rounded-2xl border-2 border-emerald-200 dark:border-emerald-800 p-10">
+            <div className="flex items-start justify-between mb-8">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
+                    <Zap size={28} className="text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-4xl font-black text-navy dark:text-white">What Actually Wins</h2>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Real patterns from 50+ hackathon winners analyzed by Gemini AI</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Colorful insight blocks */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                {
+                  icon: "🏆",
+                  title: "Chrome Extension + AI",
+                  description: "is the highest-win combo for Micro-SaaS brackets",
+                  color: "from-pink-500 to-rose-500"
+                },
+                {
+                  icon: "⚡",
+                  title: "90-Second Demos",
+                  description: "score 40% higher on 'Shippedness'",
+                  color: "from-yellow-500 to-orange-500"
+                },
+                {
+                  icon: "🏥",
+                  title: "Healthcare AI",
+                  description: "wins are about UX, not model accuracy",
+                  color: "from-blue-500 to-cyan-500"
+                },
+                {
+                  icon: "🎯",
+                  title: "Meta Tools",
+                  description: "score unusually high on Originality",
+                  color: "from-purple-500 to-pink-500"
+                },
+                {
+                  icon: "🚀",
+                  title: "Next.js + Railway",
+                  description: "fastest deployment. Judges need a live URL.",
+                  color: "from-green-500 to-emerald-500"
+                },
+                {
+                  icon: "👥",
+                  title: "Teams of 2-3",
+                  description: "outperform solo and 4+ on execution",
+                  color: "from-indigo-500 to-blue-500"
+                }
+              ].map((block, i) => (
+                <div
+                  key={i}
+                  className={`bg-gradient-to-br ${block.color} rounded-xl p-6 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer`}
+                >
+                  <div className="text-4xl mb-3">{block.icon}</div>
+                  <h3 className="text-lg font-black mb-2">{block.title}</h3>
+                  <p className="text-sm font-medium text-white/90">{block.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Page header */}
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-black text-navy tracking-tight">Hackathon Dashboard</h1>
-            <p className="text-slate-500 text-sm mt-1">
+            <h1 className="text-2xl font-black text-navy dark:text-white tracking-tight">Hackathon Dashboard</h1>
+            <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
               AI-summarized · deadline-sorted · live from Devpost
             </p>
           </div>
@@ -196,7 +266,7 @@ export default function DashboardPage() {
         )}
 
         {/* Tabs */}
-        <div className="flex items-center gap-1 mb-6 border-b border-slate-200">
+        <div className="flex items-center gap-1 mb-6 border-b border-slate-200 dark:border-slate-700">
           {(["hackathons", "winners", "insights", "analytics"] as const).map((t) => (
             <button
               key={t}
@@ -204,7 +274,7 @@ export default function DashboardPage() {
               className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 -mb-px ${
                 tab === t
                   ? "border-accent text-accent"
-                  : "border-transparent text-slate-400 hover:text-slate-700"
+                  : "border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
               }`}
             >
               {t === "hackathons" && (
@@ -230,15 +300,15 @@ export default function DashboardPage() {
             />
 
             {/* View toggle - PROMINENT */}
-            <div className="flex items-center justify-between mb-6 bg-white rounded-lg border border-slate-200 p-3">
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">View</p>
+            <div className="flex items-center justify-between mb-6 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-3 transition-colors">
+              <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">View</p>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setView("grid")}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
                     view === "grid"
                       ? "bg-accent text-white shadow-md"
-                      : "text-slate-600 hover:bg-slate-100"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                   }`}
                 >
                   <LayoutGrid size={16} />
@@ -249,7 +319,7 @@ export default function DashboardPage() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
                     view === "list"
                       ? "bg-accent text-white shadow-md"
-                      : "text-slate-600 hover:bg-slate-100"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                   }`}
                 >
                   <List size={16} />
@@ -260,7 +330,7 @@ export default function DashboardPage() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
                     view === "calendar"
                       ? "bg-accent text-white shadow-md"
-                      : "text-slate-600 hover:bg-slate-100"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
                   }`}
                 >
                   <Calendar size={16} />
@@ -347,7 +417,7 @@ export default function DashboardPage() {
         {tab === "insights" && (
           <div>
             {/* Header Section */}
-            <div className="mb-10 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl border-2 border-green-200 p-8">
+            <div className="mb-10 bg-gradient-to-r from-green-50 dark:from-green-950/30 to-blue-50 dark:to-blue-950/30 rounded-2xl border-2 border-green-200 dark:border-green-800 p-8 transition-colors">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
@@ -355,8 +425,8 @@ export default function DashboardPage() {
                       <Zap size={24} className="text-white" />
                     </div>
                     <div>
-                      <h2 className="text-3xl font-black text-navy">AI-Powered Winning Intelligence</h2>
-                      <p className="text-sm text-slate-600 mt-1">Real patterns from 50+ hackathon winners</p>
+                      <h2 className="text-3xl font-black text-navy dark:text-white">AI-Powered Winning Intelligence</h2>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Real patterns from 50+ hackathon winners</p>
                     </div>
                   </div>
                 </div>
@@ -366,21 +436,21 @@ export default function DashboardPage() {
 
             {/* Key Insights Grid */}
             <div className="mb-10">
-              <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">🔥 Winning Patterns</h3>
+              <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">🔥 Winning Patterns</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {AI_INSIGHTS.map((insight, i) => (
                   <div
                     key={i}
-                    className="bg-white border-2 border-slate-200 rounded-xl p-5 hover:border-accent hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
+                    className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:border-accent hover:shadow-lg dark:hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
                   >
-                    <p className="text-sm font-semibold text-navy leading-relaxed">{insight}</p>
+                    <p className="text-sm font-semibold text-navy dark:text-slate-100 leading-relaxed">{insight}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Deep Dive Section */}
-            <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl p-8 text-white shadow-xl">
+            <div className="bg-gradient-to-br from-green-600 dark:from-green-900 to-emerald-600 dark:to-emerald-900 rounded-2xl p-8 text-white shadow-xl transition-colors">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
                   <Zap size={20} />
@@ -418,7 +488,65 @@ export default function DashboardPage() {
         )}
 
         {/* Analytics tab */}
-        {tab === "analytics" && <NovusCarousel screenshots={["/novus-1-pages.png", "/novus-2-events.png", "/novus-3-funnels.png"]} />}
+        {tab === "analytics" && (
+          <div>
+            {/* Judges Analytics Section */}
+            <div className="mb-10 bg-gradient-to-br from-blue-50 dark:from-blue-950/30 to-indigo-50 dark:to-indigo-950/30 rounded-2xl border-2 border-blue-200 dark:border-blue-800 p-10 shadow-lg">
+              <div className="flex items-start justify-between gap-6">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                      <span className="text-2xl">📊</span>
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-black text-navy dark:text-white">Analytics for Judges</h2>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Real-time product intelligence tracked by Novus.ai</p>
+                    </div>
+                  </div>
+                  <p className="text-base font-semibold text-slate-700 dark:text-slate-300 mt-6 mb-6">
+                    ✅ <strong>Live user tracking enabled</strong> — See who's using AIHackTracker, what they click, and how they interact with hackathons.
+                  </p>
+                  <div className="space-y-3 mb-8">
+                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+                      <span className="text-lg">📈</span>
+                      <span><strong>Track Event Received:</strong> Real-time user actions (clicks, filters, calendar usage)</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+                      <span className="text-lg">👥</span>
+                      <span><strong>New Visitor Alerts:</strong> See when judges join and explore</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400">
+                      <span className="text-lg">⚡</span>
+                      <span><strong>Product Signals:</strong> Automated insights about engagement patterns</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Judges CTA */}
+              <div className="mt-8 pt-8 border-t border-blue-200 dark:border-blue-800">
+                <p className="text-lg font-bold text-navy dark:text-white mb-4">
+                  👨‍⚖️ <strong>Judges</strong> — Click below for Slack link to see Novus updates
+                </p>
+                <a
+                  href="https://join.slack.com/t/aihacktracker-33m8986/shared_invite/zt-40tfdsjk2-9FQcGdIA5GFn6mf_FHcPvg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:-translate-y-1"
+                >
+                  <span className="text-xl">💬</span>
+                  <span>Join #aihacktracker-analytics on Slack</span>
+                  <span className="text-xl">→</span>
+                </a>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-4">
+                  Once you join, you'll see live Novus analytics: user activity, engagement metrics, and product signals in real-time.
+                </p>
+              </div>
+            </div>
+
+            <NovusCarousel screenshots={["/novus-1-pages.png", "/novus-2-events.png", "/novus-3-funnels.png"]} />
+          </div>
+        )}
       </main>
 
       <Footer />

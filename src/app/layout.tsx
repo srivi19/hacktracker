@@ -19,8 +19,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Dark mode script - runs before hydration */}
+        <Script
+          id="dark-mode-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (localStorage.getItem('darkMode') === 'true' ||
+                  (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+            `,
+          }}
+        />
         {/* Novus.ai analytics tracking */}
         <Script id="novus-config" strategy="beforeInteractive">
           {`window.novusConfig = { appId: "17eb64f6-abe5-499b-bf3d-0bb31a5ede74" };`}
@@ -30,7 +45,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors">{children}</body>
     </html>
   );
 }
