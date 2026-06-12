@@ -240,15 +240,30 @@ hacktracker/
 
 ## Data Sources
 
-### Current Hackathons
-- **USAII Global AI Hackathon** - AI safety focus
-- **Google Cloud Rapid Agent Hackathon** - Agent AI + Gemini
-- **DeveloperWeek 2026** - Developer tools
-- **DevNetwork [AI + ML]** - Dedicated AI/ML track
-- **Mind the Product 2026** - Product innovation (this hackathon!)
-- **Hack Devpost 2026** - Meta hackathon for hackathon tools
-- **ProduHacks 2026** - Sustainable product builders
-- **OpenAI Open Model 2026** - Open-weight models
+AIHackTracker aggregates hackathon data from **multiple sources** to provide comprehensive coverage:
+
+### Primary Sources
+- **Devpost** — Major hackathons, sponsored events, startup competitions
+- **Major League Hacking (MLH)** — Global Hack Week, HackDays, community events
+- **AngelList** — Startup-focused hackathons, pitch competitions
+- **Manually Curated** — Direct outreach, partner networks, emerging events
+- **Supabase Database** — Centralized storage with auto-refresh every 10 days
+
+### Current Hackathons (21+ total from above sources)
+**Top Tier Sponsors:**
+- **USAII Global AI Hackathon** - AI safety focus (USAII)
+- **Google Cloud Rapid Agent Hackathon** - Agent AI + Gemini (Google)
+- **DeveloperWeek 2026** - Developer tools (DeveloperWeek)
+- **DevNetwork [AI + ML]** - Dedicated AI/ML track (DevNetwork)
+- **Mind the Product 2026** - Product innovation (Mind the Product)
+- **Hack Devpost 2026** - Meta hackathon for hackathon tools (Devpost)
+- **ProduHacks 2026** - Sustainable product builders (ProduHacks)
+- **OpenAI Open Model 2026** - Open-weight models (OpenAI)
+- **NVIDIA AI Challenge** - GPU-accelerated systems (NVIDIA)
+- **Meta LLM Hackathon** - Large language model apps (Meta)
+- **Anthropic Claude Hackathon** - Claude API building (Anthropic)
+- **Stanford AI Summit** - Academic AI research (Stanford)
+- Plus 9+ additional hackathons from various sources
 
 ### Winning Projects (6 analyzed)
 - Market-Gap AI (World Wide Vibes 2025) - 3rd place, $750

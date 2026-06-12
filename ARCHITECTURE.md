@@ -67,6 +67,24 @@ AIHackTracker is a Next.js-based web application that aggregates hackathon oppor
 
 ## Data Architecture
 
+### Data Collection Pipeline
+
+AIHackTracker aggregates hackathon data from **multiple sources** into a centralized Supabase database:
+
+```
+Devpost APIs ──┐
+MLH APIs ──────┼──→ Manual Curation ──→ Supabase PostgreSQL ──→ API Routes ──→ Frontend
+AngelList ─────┤
+Partner Networks──┘
+```
+
+**Data Sources:**
+1. **Devpost** — Primary source for sponsored hackathons, tech company events
+2. **Major League Hacking (MLH)** — Global Hack Week events, community hackathons
+3. **AngelList** — Startup competitions, investor-backed hackathons
+4. **Manual Curation** — Direct partnerships, emerging events, regional hackathons
+5. **Community Submissions** — User-suggested hackathons (future feature)
+
 ### Primary Data Source: Supabase
 
 Supabase (PostgreSQL) is the **primary** source of truth for all hackathon data. It is queried first on every API request.

@@ -99,8 +99,8 @@ export default function HomePage() {
               <br className="hidden sm:block" /> what wins, and never miss a deadline again.
             </p>
 
-            <p className="text-xs text-slate-400 dark:text-slate-500 mb-8">
-              Powered by Devpost · Gemini AI · Real-time deadline tracking.
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-8">
+              Data from Devpost · MLH · AngelList · Manually Curated · Powered by Supabase, Gemini AI, Novus Analytics
             </p>
 
             {/* Feature chips */}
