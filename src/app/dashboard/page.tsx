@@ -396,21 +396,6 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Key Insights Grid */}
-            <div className="mb-10">
-              <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">🔥 Winning Patterns</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {AI_INSIGHTS.map((insight, i) => (
-                  <div
-                    key={i}
-                    className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:border-accent hover:shadow-lg dark:hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
-                  >
-                    <p className="text-sm font-semibold text-navy dark:text-slate-100 leading-relaxed">{insight}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Deep Dive Section */}
             <div className="bg-gradient-to-br from-green-600 dark:from-green-900 to-emerald-600 dark:to-emerald-900 rounded-2xl p-8 text-white shadow-xl transition-colors">
               <div className="flex items-center gap-3 mb-6">

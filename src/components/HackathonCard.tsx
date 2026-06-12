@@ -1,6 +1,7 @@
 "use client";
 import { Calendar, Users, ExternalLink, Star, Clock } from "lucide-react";
 import type { Hackathon } from "@/types";
+import { generateGoogleCalendarUrl, downloadICalEvent } from "@/lib/calendar-utils";
 
 interface Props {
   hackathon: Hackathon;
@@ -80,19 +81,30 @@ export default function HackathonCard({ hackathon: h }: Props) {
       </div>
 
       {/* Countdown + CTA */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2">
         <span className={`flex items-center gap-1 text-xs font-semibold ${urgencyClass(daysLeft)}`}>
           <Clock size={11} />
           {daysLeft > 0 ? `${daysLeft}d left` : "Closed"}
         </span>
-        <a
-          href={h.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1 text-xs font-bold text-accent hover:text-accent-dark transition-colors"
-        >
-          View hackathon <ExternalLink size={11} />
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href={generateGoogleCalendarUrl(h)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-xs font-bold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors"
+            title="Add to Google Calendar"
+          >
+            <Calendar size={11} />
+          </a>
+          <a
+            href={h.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-xs font-bold text-accent hover:text-accent-dark transition-colors"
+          >
+            View <ExternalLink size={11} />
+          </a>
+        </div>
       </div>
     </div>
   );
