@@ -183,7 +183,7 @@ export default function DashboardPage() {
                 {
                   icon: "⚡",
                   title: "90-Second Demos",
-                  description: "score 40% higher on 'Shippedness'",
+                  description: "score 40% higher on Shippedness",
                   color: "from-yellow-500 to-orange-500"
                 },
                 {
@@ -464,7 +464,7 @@ export default function DashboardPage() {
                 </li>
                 <li className="flex gap-3 text-sm leading-relaxed">
                   <span className="text-xl">⚡</span>
-                  <span>Projects that demo in under <strong>90 seconds</strong> score 40% higher on &ldquo;Shippedness&rdquo;</span>
+                  <span>Projects that demo in under <strong>90 seconds</strong> score 40% higher on Shippedness</span>
                 </li>
                 <li className="flex gap-3 text-sm leading-relaxed">
                   <span className="text-xl">🏥</span>
@@ -472,7 +472,7 @@ export default function DashboardPage() {
                 </li>
                 <li className="flex gap-3 text-sm leading-relaxed">
                   <span className="text-xl">🎯</span>
-                  <span>&ldquo;Meta&rdquo; tools (hackathon tools in hackathons) score unusually high on Originality</span>
+                  <span>Meta tools (hackathon tools in hackathons) score unusually high on Originality</span>
                 </li>
                 <li className="flex gap-3 text-sm leading-relaxed">
                   <span className="text-xl">🚀</span>
