@@ -44,11 +44,6 @@ export default function HomePage() {
         <div className="absolute top-1/4 right-5 text-2xl font-black text-green-400 opacity-30 animate-float">{'{ }'}</div>
         <div className="absolute bottom-1/3 right-1/3 text-2xl font-black text-blue-400 opacity-30 animate-float" style={{ animationDelay: "1s" }}>{'< >'}</div>
         <div className="absolute top-3/4 left-1/4 text-2xl font-black text-purple-400 opacity-30 animate-float" style={{ animationDelay: "0.5s" }}>{'[ ]'}</div>
-
-        {/* Floating tech badges */}
-        <div className="absolute top-1/3 right-1/3 px-3 py-1 rounded-full bg-green-100/30 text-xs font-bold text-green-700 dark:text-green-400 animate-pulse" style={{ animationDelay: "0s" }}>AI</div>
-        <div className="absolute bottom-1/4 left-1/2 px-3 py-1 rounded-full bg-blue-100/30 text-xs font-bold text-blue-700 dark:text-blue-400 animate-pulse" style={{ animationDelay: "0.7s" }}>Hackathon</div>
-        <div className="absolute top-2/3 right-1/4 px-3 py-1 rounded-full bg-purple-100/30 text-xs font-bold text-purple-700 dark:text-purple-400 animate-pulse" style={{ animationDelay: "1.4s" }}>Winners</div>
       </div>
 
       <Header />
@@ -100,7 +95,7 @@ export default function HomePage() {
             </p>
 
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-8">
-              Data from Devpost · MLH · AngelList · Manually Curated · Powered by Supabase, Gemini AI, Novus Analytics
+              Data from Devpost · MLH · AngelList · AI-Powered Discovery · Powered by Supabase, Gemini AI, Novus Analytics
             </p>
 
             {/* Feature chips */}
