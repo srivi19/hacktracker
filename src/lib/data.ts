@@ -241,6 +241,6 @@ export const AI_INSIGHTS = [
   "📊 Projects with live demos beat static screenshots by 3x in judging scores",
   "🚀 Gemini Flash is the fastest free AI for hackathon summarization tasks",
   "💡 'Meta' tools (tools for hackers, submitted to hackathons) score high on originality",
-  "⚡ Next.js + Railway = fastest path from code to live URL — judges can actually click it",
+  "⚡ Have a live, working URL that judges can click. That&apos;s what matters most.",
   "🎯 Healthcare AI winners always solve last-mile UX, not just model accuracy",
 ];

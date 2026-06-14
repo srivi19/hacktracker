@@ -66,7 +66,7 @@ export default function Footer() {
 
       <div className="border-t border-slate-100 py-4 text-center">
         <p className="text-[10px] text-slate-400 mb-3">
-          Built with Next.js · Gemini AI · Supabase · Deployed on Railway
+          Built with Next.js · Gemini AI · Supabase · Deployed Live
         </p>
         <div className="flex items-center justify-center gap-2 mb-3">
           <span className="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">📊 Tracked by</span>

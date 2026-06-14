@@ -403,7 +403,7 @@ export default function DashboardPage() {
                   { icon: "⚡", title: "90-Second Demos", description: "score 40% higher on execution speed", color: "from-yellow-500 to-orange-500" },
                   { icon: "🏥", title: "Healthcare AI", description: "wins are about UX, not model accuracy", color: "from-blue-500 to-cyan-500" },
                   { icon: "🎯", title: "Meta Tools", description: "score unusually high on Originality", color: "from-purple-500 to-pink-500" },
-                  { icon: "🚀", title: "Next.js + Railway", description: "fastest deployment. Judges need a live URL.", color: "from-green-500 to-emerald-500" },
+                  { icon: "🚀", title: "Live Deployment", description: "Get a working URL live. That&apos;s what judges need to click.", color: "from-green-500 to-emerald-500" },
                   { icon: "👥", title: "Teams of 2-3", description: "outperform solo and 4+ on execution", color: "from-indigo-500 to-blue-500" }
                 ].map((block, i) => (
                   <div key={i} className={`bg-gradient-to-br ${block.color} rounded-xl p-6 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200`}>
@@ -463,7 +463,7 @@ export default function DashboardPage() {
                 </li>
                 <li className="flex gap-3 text-sm leading-relaxed">
                   <span className="text-xl">🚀</span>
-                  <span><strong>Next.js + Railway</strong> = fastest deployment. Judges need a live URL.</span>
+                  <span><strong>Live Deployment</strong> is critical. Judges need a working URL they can click.</span>
                 </li>
                 <li className="flex gap-3 text-sm leading-relaxed">
                   <span className="text-xl">👥</span>

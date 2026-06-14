@@ -283,7 +283,7 @@ From analyzing 6 winning projects, AIHackTracker reveals:
 📊 **Projects with live demos** beat static screenshots by 3x in judging scores
 🚀 **Gemini Flash** is the fastest free AI for hackathon summarization
 💡 **Meta tools** (tools for hackers) score high on originality
-⚡ **Next.js + Railway** = fastest path from code to live URL judges can click
+⚡ **Next.js + Live Deployment** = fastest path from code to live URL judges can click
 🎯 **Healthcare AI** winners solve last-mile UX, not just model accuracy
 
 ---
