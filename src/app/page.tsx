@@ -1,12 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { HACKATHONS, AI_INSIGHTS } from "@/lib/data";
-import { Trophy, Zap, Bell, Search, Calendar, Users, ArrowRight, Play, CheckCircle2 } from "lucide-react";
+import { HACKATHONS } from "@/lib/data";
+import { Trophy, Zap, Bell, Search, Calendar, Users, ArrowRight, Play, CheckCircle2, Sparkles, Target, Rocket } from "lucide-react";
 
 const STATS = [
   { label: "Active Hackathons", value: "21+" },
-  { label: "Prize Pool Tracked", value: "$2M+" },
+  { label: "Prize Pool", value: "$2M+" },
   { label: "Winning Projects", value: "50+" },
   { label: "AI Summaries", value: "100%" },
 ];
@@ -19,121 +20,220 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
-        {/* ===== HERO SECTION - CLEAN & PROFESSIONAL ===== */}
-        <section className="relative bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 pt-20 pb-24 sm:pt-32 sm:pb-32">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+        {/* ===== PREMIUM HERO SECTION ===== */}
+        <section className="relative bg-gradient-to-br from-slate-50 via-white to-green-50/30 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 pt-24 pb-32 sm:pt-40 sm:pb-48 overflow-hidden">
+          {/* Subtle background elements */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-100/20 dark:bg-green-900/10 rounded-full blur-3xl -z-10" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100/20 dark:bg-blue-900/10 rounded-full blur-3xl -z-10" />
+
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 text-sm font-semibold mb-8 animate-fadeInUp">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              Real data from 21+ hackathons
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-200 dark:border-green-900 bg-green-50/80 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-semibold mb-8 backdrop-blur animate-fadeInUp">
+              <Sparkles size={16} />
+              AI-Powered Hackathon Discovery
             </div>
 
-            {/* Main Logo/Brand */}
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4 animate-fadeInUp" style={{ animationDelay: "0.1s" }}>
-              <span className="text-navy dark:text-white">HACK-</span>
-              <span className="text-accent">TRACK</span>
-              <span className="text-navy dark:text-white"> AI</span>
-            </h1>
+            {/* Logo & Tagline - Premium Layout */}
+            <div className="mb-8 animate-fadeInUp" style={{ animationDelay: "0.1s" }}>
+              <h1 className="text-7xl sm:text-8xl lg:text-9xl font-black tracking-tighter leading-none mb-6">
+                <span className="text-navy dark:text-white">HACK-</span>
+                <span className="text-accent">TRACK</span>
+                <span className="text-navy dark:text-white"> AI</span>
+              </h1>
+              <h2 className="text-4xl sm:text-5xl font-bold text-navy dark:text-white mb-6">
+                Find Your Winning Hackathon
+              </h2>
+            </div>
 
-            {/* Tagline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy dark:text-white mb-6 animate-fadeInUp" style={{ animationDelay: "0.15s" }}>
-              Find Your Winning Hackathon
-            </h2>
-
-            {/* Subheadline - Clear Value Prop */}
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed animate-fadeInUp" style={{ animationDelay: "0.2s" }}>
-              Discover AI-summarized hackathons, see what judges reward, and never miss a deadline. All in one place.
+            {/* Value Proposition - Concise */}
+            <p className="text-xl sm:text-2xl text-slate-700 dark:text-slate-200 max-w-3xl mb-10 leading-relaxed font-medium animate-fadeInUp" style={{ animationDelay: "0.2s" }}>
+              AI-summarized opportunities. Real winning patterns. Never miss a deadline.
             </p>
 
-            {/* Primary CTAs - Clean & Clear */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fadeInUp" style={{ animationDelay: "0.3s" }}>
+            {/* Strong CTAs */}
+            <div className="flex flex-col sm:flex-row items-start gap-4 mb-12 animate-fadeInUp" style={{ animationDelay: "0.3s" }}>
               <Link
                 href="/dashboard"
-                className="flex items-center gap-2 px-8 py-4 bg-accent hover:bg-green-600 text-white font-bold text-base rounded-lg transition-colors shadow-lg hover:shadow-xl"
+                className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg rounded-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
               >
-                Explore Hackathons <ArrowRight size={18} />
+                <Rocket size={20} /> Start Exploring
               </Link>
               <Link
                 href="/dashboard?tab=insights"
-                className="flex items-center gap-2 px-8 py-4 border-2 border-slate-300 dark:border-slate-600 text-navy dark:text-white font-bold text-base rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                className="flex items-center gap-3 px-8 py-4 border-2 border-slate-300 dark:border-slate-600 text-navy dark:text-white font-bold text-lg rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
               >
-                <Zap size={18} /> What Wins?
+                <Zap size={20} /> See Winning Patterns
               </Link>
             </div>
 
             {/* Trust Signal */}
-            <div className="text-sm text-slate-500 dark:text-slate-400 animate-fadeInUp" style={{ animationDelay: "0.4s" }}>
-              Data from <span className="font-semibold">Devpost · MLH · AngelList</span>
+            <div className="flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400 animate-fadeInUp" style={{ animationDelay: "0.4s" }}>
+              <span>✓ Data from Devpost, MLH, AngelList</span>
+              <span>✓ Updated live every 10 days</span>
+              <span>✓ 50+ winners analyzed</span>
             </div>
           </div>
         </section>
 
-        {/* ===== STATS BAR ===== */}
-        <section className="border-y border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+        {/* ===== STATS BAR - PREMIUM ===== */}
+        <section className="border-y border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-800">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 text-center">
             {STATS.map((s, i) => (
               <div key={s.label} className="animate-fadeInUp" style={{ animationDelay: `${i * 0.1}s` }}>
-                <p className="text-3xl sm:text-4xl font-black text-navy dark:text-white">{s.value}</p>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 uppercase tracking-widest font-semibold">{s.label}</p>
+                <p className="text-4xl sm:text-5xl font-black text-navy dark:text-white mb-2">{s.value}</p>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 uppercase tracking-widest font-bold">{s.label}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ===== HOW IT WORKS - VISUAL DEMO ===== */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+        {/* ===== SEE IT IN ACTION - DASHBOARD PREVIEW ===== */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black text-navy dark:text-white mb-4">How It Works</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300">Three steps to find your next winning hackathon</p>
+            <h2 className="text-4xl sm:text-5xl font-black text-navy dark:text-white mb-4">See It In Action</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300">The complete hackathon discovery platform</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              {
-                num: "01",
-                title: "Browse & Filter",
-                desc: "Explore 21+ hackathons filtered by deadline, prize, tech stack, and difficulty. Find what's open and what's closing soon.",
-                icon: "🔍"
-              },
-              {
-                num: "02",
-                title: "Read AI Summaries",
-                desc: "Gemini AI reads every hackathon page and writes a one-liner. No fluff, just value. Know instantly if it's for you.",
-                icon: "✨"
-              },
-              {
-                num: "03",
-                title: "See What Wins",
-                desc: "View 50+ past winning projects. See what judges reward. Learn the patterns. Build better and win.",
-                icon: "🏆"
-              }
-            ].map((step, i) => (
-              <div
-                key={i}
-                className="relative bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 hover:border-green-300 dark:hover:border-green-600 hover:shadow-lg transition-all animate-fadeInUp"
-                style={{ animationDelay: `${i * 0.15}s` }}
-              >
-                <div className="text-5xl font-black text-green-200 dark:text-green-900/40 mb-4">{step.num}</div>
-                <div className="text-3xl mb-4">{step.icon}</div>
-                <h3 className="text-xl font-bold text-navy dark:text-white mb-3">{step.title}</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{step.desc}</p>
+          {/* Dashboard Preview Card - Premium */}
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow animate-fadeInUp">
+            {/* Browser Header */}
+            <div className="bg-slate-100 dark:bg-slate-900 px-6 py-4 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500" />
               </div>
-            ))}
+              <div className="flex-1 text-center text-sm text-slate-500 dark:text-slate-400">
+                hacktracker-production.up.railway.app/dashboard
+              </div>
+            </div>
+
+            {/* Dashboard Content Preview */}
+            <div className="bg-slate-50 dark:bg-slate-900 p-8">
+              <div className="space-y-6">
+                {/* Tabs */}
+                <div className="flex gap-3 mb-8">
+                  <div className="px-4 py-2 bg-accent text-white rounded-lg font-bold text-sm">Grid</div>
+                  <div className="px-4 py-2 text-slate-400 font-bold text-sm">List</div>
+                  <div className="px-4 py-2 text-slate-400 font-bold text-sm">Calendar</div>
+                </div>
+
+                {/* Filter Bar */}
+                <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 space-y-3">
+                  <div className="flex gap-2 flex-wrap">
+                    <input type="text" placeholder="Search hackathons..." className="flex-1 px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm dark:bg-slate-700" />
+                    <select className="px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm dark:bg-slate-700">
+                      <option>All Categories</option>
+                    </select>
+                  </div>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="inline-block px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-xs font-bold">Python</span>
+                    <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-bold">React</span>
+                    <span className="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs font-bold">Web3</span>
+                    <span className="text-xs text-slate-500">+15 more filters</span>
+                  </div>
+                </div>
+
+                {/* Hackathon Cards Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {featured.slice(0, 2).map((h) => (
+                    <div key={h.id} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 hover:border-green-300 dark:hover:border-green-600 transition-colors">
+                      <div className="flex items-start justify-between mb-2">
+                        <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">Open</span>
+                        <span className="text-sm font-black text-accent">{h.prize_pool}</span>
+                      </div>
+                      <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{h.title}</h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 italic mb-2">"{h.summary}"</p>
+                      <div className="flex gap-1 mb-2">
+                        {h.tech_tags.slice(0, 2).map(tag => (
+                          <span key={tag} className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-0.5 rounded">{tag}</span>
+                        ))}
+                      </div>
+                      <div className="text-xs text-slate-400 flex justify-between">
+                        <span>📅 {new Date(h.deadline).toLocaleDateString()}</span>
+                        <span>👥 {h.team_size}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Below Preview */}
+          <div className="text-center mt-12 animate-fadeInUp">
+            <Link href="/dashboard" className="inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-green-600 text-white font-bold rounded-lg transition-colors shadow-lg">
+              <Play size={18} /> Explore Full Dashboard
+            </Link>
           </div>
         </section>
 
-        {/* ===== FEATURED HACKATHONS ===== */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-black text-navy dark:text-white">Featured Opportunities</h2>
-              <p className="text-slate-600 dark:text-slate-300 text-lg mt-2">Curated hackathons open right now</p>
+        {/* ===== HOW IT WORKS - VISUAL ===== */}
+        <section className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 py-24">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-black text-navy dark:text-white mb-4">How It Works</h2>
+              <p className="text-xl text-slate-600 dark:text-slate-300">Three simple steps to your next winning hackathon</p>
             </div>
-            <Link
-              href="/dashboard"
-              className="text-accent font-bold flex items-center gap-2 hover:gap-3 transition-all"
-            >
-              View All <ArrowRight size={18} />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              {[
+                {
+                  num: 1,
+                  icon: Search,
+                  title: "Browse & Filter",
+                  features: ["21+ hackathons", "Filter by deadline, prize, tech", "Sort by what's open now"]
+                },
+                {
+                  num: 2,
+                  icon: Sparkles,
+                  title: "Read AI Summaries",
+                  features: ["Gemini reads each page", "One-liner summaries", "Instant value judgment"]
+                },
+                {
+                  num: 3,
+                  icon: Trophy,
+                  title: "See What Wins",
+                  features: ["50+ winning projects", "Real tech stacks", "Judge patterns revealed"]
+                }
+              ].map((step, i) => {
+                const Icon = step.icon;
+                return (
+                  <div key={i} className="relative animate-fadeInUp" style={{ animationDelay: `${i * 0.15}s` }}>
+                    {/* Number Badge */}
+                    <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-accent to-green-600 text-white rounded-full flex items-center justify-center font-black text-xl shadow-lg">
+                      {step.num}
+                    </div>
+
+                    {/* Card */}
+                    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 h-full hover:border-green-300 dark:hover:border-green-600 hover:shadow-lg transition-all">
+                      <Icon className="w-12 h-12 text-accent mb-6" />
+                      <h3 className="text-2xl font-bold text-navy dark:text-white mb-4">{step.title}</h3>
+                      <ul className="space-y-3">
+                        {step.features.map((feature, j) => (
+                          <li key={j} className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
+                            <CheckCircle2 size={18} className="text-accent flex-shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== FEATURED HACKATHONS - PREMIUM ===== */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-24">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <h2 className="text-4xl sm:text-5xl font-black text-navy dark:text-white mb-3">Open Right Now</h2>
+              <p className="text-lg text-slate-600 dark:text-slate-300">Hackathons with open applications</p>
+            </div>
+            <Link href="/dashboard" className="text-accent font-bold flex items-center gap-2 hover:gap-3 transition-all text-lg">
+              View All <ArrowRight size={20} />
             </Link>
           </div>
 
@@ -144,46 +244,36 @@ export default function HomePage() {
                 href={h.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:border-green-300 dark:hover:border-green-600 hover:shadow-lg transition-all animate-fadeInUp"
+                className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 hover:border-green-300 dark:hover:border-green-600 hover:shadow-2xl transition-all animate-fadeInUp hover:-translate-y-2"
                 style={{ animationDelay: `${i * 0.15}s` }}
               >
-                {/* Header */}
                 <div className="flex items-start justify-between mb-4">
-                  <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide status-${h.status}`}>
-                    {h.status === "closing_soon" ? "Closing Soon" : h.status === "open" ? "Open" : h.status}
+                  <span className={`inline-block text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wide status-${h.status}`}>
+                    {h.status === "closing_soon" ? "⏰ Closing Soon" : "🟢 Open"}
                   </span>
-                  <span className="text-lg font-black text-accent">{h.prize_pool}</span>
+                  <span className="text-2xl font-black text-accent">{h.prize_pool}</span>
                 </div>
 
-                {/* Title */}
-                <h3 className="text-lg font-bold text-navy dark:text-white mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                <h3 className="text-xl font-bold text-navy dark:text-white mb-3 group-hover:text-accent transition-colors line-clamp-2">
                   {h.title}
                 </h3>
 
-                {/* Summary */}
-                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">{h.summary}</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-3">{h.summary}</p>
 
-                {/* Tech tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {h.tech_tags.slice(0, 2).map((tag) => (
-                    <span key={tag} className="inline-block text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-1 rounded-full font-medium">
+                  {h.tech_tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="inline-block text-xs bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full font-semibold">
                       {tag}
                     </span>
                   ))}
-                  {h.tech_tags.length > 2 && (
-                    <span className="text-xs text-slate-500 dark:text-slate-400 px-2 py-1">
-                      +{h.tech_tags.length - 2}
-                    </span>
-                  )}
                 </div>
 
-                {/* Metadata */}
-                <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-4 border-t border-slate-100 dark:border-slate-700">
-                  <span className="flex items-center gap-1">
-                    <Calendar size={14} /> {new Date(h.deadline).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400 pt-4 border-t border-slate-100 dark:border-slate-700">
+                  <span className="flex items-center gap-2">
+                    <Calendar size={16} /> {new Date(h.deadline).toLocaleDateString()}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Users size={14} /> {h.team_size}
+                  <span className="flex items-center gap-2">
+                    <Users size={16} /> {h.team_size}
                   </span>
                 </div>
               </a>
@@ -191,102 +281,56 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ===== WHY HACKTRACKER ===== */}
-        <section className="bg-slate-50 dark:bg-slate-800/50 py-20">
+        {/* ===== FEATURES - VISUAL CARDS ===== */}
+        <section className="bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-black text-navy dark:text-white mb-4">Why Builders Use AIHackTracker</h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300">Everything you need to find the right hackathon</p>
+              <h2 className="text-4xl sm:text-5xl font-black text-navy dark:text-white mb-4">Why Builders Choose AIHackTracker</h2>
+              <p className="text-xl text-slate-600 dark:text-slate-300">Everything you need to win</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {[
-                {
-                  icon: <Search size={24} className="text-accent" />,
-                  title: "One Dashboard",
-                  desc: "All hackathons from Devpost, MLH, AngelList in one place. Stop tab-switching.",
-                },
-                {
-                  icon: <Zap size={24} className="text-accent" />,
-                  title: "AI-Powered Summaries",
-                  desc: "Gemini reads every page for you. Get to the point in seconds.",
-                },
-                {
-                  icon: <Trophy size={24} className="text-accent" />,
-                  title: "Winning Patterns",
-                  desc: "See what past winners built and what judges actually reward.",
-                },
-                {
-                  icon: <Bell size={24} className="text-accent" />,
-                  title: "Never Miss a Deadline",
-                  desc: "Bookmark hackathons and get real-time reminders.",
-                },
-              ].map((feature, i) => (
-                <div
-                  key={i}
-                  className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:border-green-300 dark:hover:border-green-600 hover:shadow-lg transition-all animate-fadeInUp"
-                  style={{ animationDelay: `${i * 0.1}s` }}
-                >
-                  <div className="mb-4">{feature.icon}</div>
-                  <h3 className="text-lg font-bold text-navy dark:text-white mb-2">{feature.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{feature.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ===== WINNING INTELLIGENCE TEASER ===== */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-          <div className="bg-gradient-to-br from-green-50 dark:from-green-900/20 to-blue-50 dark:to-blue-900/20 border-2 border-green-200 dark:border-green-800 rounded-2xl p-8 sm:p-12">
-            <div className="flex items-start gap-4 mb-6">
-              <Zap className="text-accent flex-shrink-0 mt-1" size={28} />
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-black text-navy dark:text-white mb-3">Winning Intelligence</h2>
-                <p className="text-slate-600 dark:text-slate-300 text-lg mb-6">
-                  Real patterns from 50+ hackathon winners. See what tech stacks, team sizes, and ideas actually win.
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                  {[
-                    "✓ Most winning tech stack: React + Node.js",
-                    "✓ Ideal team size: 2-3 people",
-                    "✓ Fastest to ship: Next.js + Railway",
-                    "✓ Highest engagement: Healthcare + AI"
-                  ].map((insight, i) => (
-                    <div key={i} className="flex items-center gap-2 text-navy dark:text-white font-semibold">
-                      <CheckCircle2 size={18} className="text-green-600 dark:text-green-400 flex-shrink-0" />
-                      {insight}
+                { icon: Search, title: "Smart Search & Filter", desc: "Find hackathons matching your tech stack, deadline, and prize in seconds" },
+                { icon: Zap, title: "AI-Powered Summaries", desc: "Gemini reads the fine print. You get the key facts instantly" },
+                { icon: Trophy, title: "Winning Patterns", desc: "See what past winners built. Learn what judges actually reward" },
+                { icon: Bell, title: "Smart Alerts", desc: "Bookmark hackathons. Get real-time deadline reminders" },
+                { icon: Target, title: "Prize Pool Tracker", desc: "$2M+ in opportunities tracked. Find the best rewards" },
+                { icon: Rocket, title: "Global Reach", desc: "Hackathons from North America, Europe, Asia, and beyond" }
+              ].map((feature, i) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={i} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-8 hover:border-green-300 dark:hover:border-green-600 hover:shadow-lg transition-all animate-fadeInUp" style={{ animationDelay: `${i * 0.08}s` }}>
+                    <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl flex items-center justify-center mb-4">
+                      <Icon className="w-7 h-7 text-accent" />
                     </div>
-                  ))}
-                </div>
-
-                <Link
-                  href="/dashboard?tab=insights"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-green-600 text-white font-bold rounded-lg transition-colors"
-                >
-                  <Zap size={18} /> View Winning Patterns
-                </Link>
-              </div>
+                    <h3 className="text-lg font-bold text-navy dark:text-white mb-2">{feature.title}</h3>
+                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed">{feature.desc}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* ===== CTA SECTION ===== */}
-        <section className="bg-gradient-to-br from-navy to-slate-800 dark:from-slate-900 dark:to-slate-950 py-20 text-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-            <h2 className="text-3xl sm:text-4xl font-black mb-6">Ready to Find Your Hackathon?</h2>
-            <p className="text-lg text-slate-200 mb-10">Join 100+ builders who use AIHackTracker to discover their next winning hackathon.</p>
+        {/* ===== FINAL CTA ===== */}
+        <section className="relative bg-gradient-to-br from-navy to-slate-800 dark:from-slate-900 dark:to-slate-950 py-24 overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-500/10 rounded-full blur-3xl -z-10" />
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-6">Start Winning Today</h2>
+            <p className="text-xl text-slate-200 mb-10 leading-relaxed">
+              Join builders who've already found their next winning hackathon with AIHackTracker. No sign-up required.
+            </p>
 
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-2 px-10 py-4 bg-accent hover:bg-green-600 text-white font-bold text-lg rounded-lg transition-colors shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-accent to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-lg rounded-lg transition-all shadow-2xl hover:shadow-3xl hover:-translate-y-1"
             >
-              Start Exploring <ArrowRight size={20} />
+              <Rocket size={22} /> Explore Hackathons Now
             </Link>
 
             <p className="text-sm text-slate-400 mt-8">
-              No sign-up required. Browse instantly.
+              No credit card. No sign-up. Browse instantly.
             </p>
           </div>
         </section>
