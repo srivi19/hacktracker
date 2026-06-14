@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-slate-200 bg-white mt-auto">
+    <footer className="w-full border-t border-slate-200 bg-white mt-auto dark:border-slate-700 dark:bg-slate-900">
       {/* Metadata bar — identical style to Market Gap AI bottom bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
 
@@ -45,10 +47,12 @@ export default function Footer() {
             Builder
           </p>
           <div className="flex items-center gap-2">
-            <img
+            <Image
               src="/Vee-Photo.png"
               alt="Vi (Srividya Narayanan)"
-              className="w-7 h-7 rounded-full object-cover flex-shrink-0"
+              width={28}
+              height={28}
+              className="rounded-full object-cover flex-shrink-0"
             />
             <div>
               <p className="text-xs font-bold text-accent leading-tight">
@@ -95,7 +99,7 @@ export default function Footer() {
           <a href="mailto:srividya.chandra@gmail.com" className="hover:text-accent transition-colors group relative" title="Get in touch">
             Contact
             <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-slate-700 text-white rounded text-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-              Questions? Let's talk
+              Questions? Let&apos;s talk
             </span>
           </a>
         </div>
