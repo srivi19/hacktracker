@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import PendoInitializer from "@/components/PendoInitializer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,24 +37,8 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Novus.ai analytics tracking - Correct SDK URL with API key */}
-        <Script
-          src="https://cdn.pendo.io/agent/static/17eb64f6-abe5-499b-bf3d-0bb31a5ede74/pendo.js"
-          strategy="afterInteractive"
-          onLoad={() => {
-            const pendo = (window as any).pendo;
-            if (pendo) {
-              pendo.initialize({
-                visitor: {
-                  id: typeof window !== 'undefined' ? window.location.hostname : 'unknown',
-                },
-                account: {
-                  id: 'aihacktracker-prod'
-                }
-              });
-            }
-          }}
-        />
+        {/* Novus.ai analytics tracking - Client Component */}
+        <PendoInitializer />
       </head>
       <body className="antialiased bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">{children}</body>
     </html>
