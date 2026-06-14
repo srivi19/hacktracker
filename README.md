@@ -53,7 +53,7 @@ AIHackTracker is a one-stop intelligence hub for AI hackathons. It aggregates op
 | **📊 Live Analytics** | Real-time Novus.ai tracking → Slack alerts | See who's using it |
 | **🌙 Dark Mode** | Fully styled night mode with toggle | Code-friendly theme |
 | **🗓️ Calendar Export** | Add deadlines to Google Calendar instantly | Never forget a date |
-| **⚡ Lightning Fast** | Next.js + Supabase + Railway | Instant load times |
+| **⚡ Lightning Fast** | Next.js + Supabase + Live Deployment | Instant load times |
 | **♻️ Auto-Refresh** | pg_cron updates every 10 days | Always up-to-date |
 
 ---
