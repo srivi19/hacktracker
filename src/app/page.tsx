@@ -143,7 +143,7 @@ export default function HomePage() {
                         <span className="text-sm font-black text-accent">{h.prize_pool}</span>
                       </div>
                       <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-1">{h.title}</h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 italic mb-2">"{h.summary}"</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 italic mb-2">&quot;{h.summary}&quot;</p>
                       <div className="flex gap-1 mb-2">
                         {h.tech_tags.slice(0, 2).map(tag => (
                           <span key={tag} className="text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-2 py-0.5 rounded">{tag}</span>
