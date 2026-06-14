@@ -82,8 +82,8 @@ Partner Networks──┘
 1. **Devpost** — Primary source for sponsored hackathons, tech company events
 2. **Major League Hacking (MLH)** — Global Hack Week events, community hackathons
 3. **AngelList** — Startup competitions, investor-backed hackathons
-4. **Manual Curation** — Direct partnerships, emerging events, regional hackathons
-5. **Community Submissions** — User-suggested hackathons (future feature)
+4. **AI-Powered Discovery** — Intelligent aggregation, partner networks, emerging events
+5. **Community Intelligence** — User-suggested hackathons, community contributions (future)
 
 ### Primary Data Source: Supabase
 

@@ -45,9 +45,11 @@ export default function Footer() {
             Builder
           </p>
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-green-600 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
-              VI
-            </div>
+            <img
+              src="/Vee-Photo.png"
+              alt="Vi (Srividya Narayanan)"
+              className="w-7 h-7 rounded-full object-cover flex-shrink-0"
+            />
             <div>
               <p className="text-xs font-bold text-accent leading-tight">
                 VI (SRIVIDYA NARAYANAN)
@@ -69,13 +71,33 @@ export default function Footer() {
           </span>
         </div>
         <div className="flex items-center justify-center gap-3 text-[9px] text-slate-500 flex-wrap">
-          <a href="#about" className="hover:text-accent transition-colors">About</a>
+          <a href="#about" className="hover:text-accent transition-colors group relative" title="Learn about AIHackTracker">
+            About
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-slate-700 text-white rounded text-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              Discover winning hackathons
+            </span>
+          </a>
           <span>·</span>
-          <a href="#privacy" className="hover:text-accent transition-colors">Privacy</a>
+          <a href="#privacy" className="hover:text-accent transition-colors group relative" title="Privacy policy">
+            Privacy
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-slate-700 text-white rounded text-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              We protect your data
+            </span>
+          </a>
           <span>·</span>
-          <a href="#terms" className="hover:text-accent transition-colors">Terms</a>
+          <a href="#terms" className="hover:text-accent transition-colors group relative" title="Terms of service">
+            Terms
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-slate-700 text-white rounded text-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              Platform guidelines
+            </span>
+          </a>
           <span>·</span>
-          <a href="mailto:srividya.chandra@gmail.com" className="hover:text-accent transition-colors">Contact</a>
+          <a href="mailto:srividya.chandra@gmail.com" className="hover:text-accent transition-colors group relative" title="Get in touch">
+            Contact
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-slate-700 text-white rounded text-[8px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              Questions? Let's talk
+            </span>
+          </a>
         </div>
       </div>
     </footer>

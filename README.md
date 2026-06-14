@@ -246,7 +246,7 @@ AIHackTracker aggregates hackathon data from **multiple sources** to provide com
 - **Devpost** — Major hackathons, sponsored events, startup competitions
 - **Major League Hacking (MLH)** — Global Hack Week, HackDays, community events
 - **AngelList** — Startup-focused hackathons, pitch competitions
-- **Manually Curated** — Direct outreach, partner networks, emerging events
+- **AI-Powered Discovery** — Intelligent aggregation, partner networks, emerging events
 - **Supabase Database** — Centralized storage with auto-refresh every 10 days
 
 ### Current Hackathons (21+ total from above sources)
