@@ -319,7 +319,7 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
             <h2 className="text-4xl sm:text-5xl font-black text-white mb-6">Start Winning Today</h2>
             <p className="text-xl text-slate-200 mb-10 leading-relaxed">
-              Join builders who've already found their next winning hackathon with AIHackTracker. No sign-up required.
+              Join builders who&apos;ve already found their next winning hackathon with AIHackTracker. No sign-up required.
             </p>
 
             <Link
