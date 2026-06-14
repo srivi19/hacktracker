@@ -36,23 +36,21 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Novus.ai analytics tracking */}
+        {/* Novus.ai analytics tracking - Correct SDK URL with API key */}
         <Script
-          src="https://novus.pendo.io/sdk/web.js"
+          src="https://cdn.pendo.io/agent/static/17eb64f6-abe5-499b-bf3d-0bb31a5ede74/pendo.js"
           strategy="afterInteractive"
-        />
-        <Script
-          id="novus-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (window.pendo) {
-                window.pendo.initialize({
-                  visitor: { id: "aihacktracker-user", email: "judges@aihacktracker.dev" },
-                  account: { id: "aihacktracker-prod" }
-                });
-              }
-            `,
+          onLoad={() => {
+            if (window.pendo) {
+              window.pendo.initialize({
+                visitor: {
+                  id: typeof window !== 'undefined' ? window.location.hostname : 'unknown',
+                },
+                account: {
+                  id: 'aihacktracker-prod'
+                }
+              });
+            }
           }}
         />
       </head>
