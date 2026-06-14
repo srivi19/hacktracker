@@ -256,41 +256,44 @@ export default function DashboardPage() {
             />
 
             {/* View toggle - PROMINENT */}
-            <div className="flex items-center justify-between mb-6 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-3 transition-colors">
-              <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">View</p>
-              <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between mb-8 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-800/50 rounded-2xl border-2 border-slate-200 dark:border-slate-700 p-5 transition-colors shadow-lg">
+              <p className="text-sm font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest">View</p>
+              <div className="flex items-center gap-3">
                 <button
                   onClick={() => setView("grid")}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                  className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-sm transition-all relative group ${
                     view === "grid"
-                      ? "bg-accent text-white shadow-md"
-                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+                      ? "bg-gradient-to-r from-accent to-green-600 text-white shadow-lg shadow-green-300 dark:shadow-green-900/50 scale-105"
+                      : "text-slate-700 dark:text-slate-300 hover:text-navy dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 hover:shadow-md"
                   }`}
                 >
-                  <LayoutGrid size={16} />
-                  Grid
+                  <LayoutGrid size={18} />
+                  <span className="font-semibold">Grid</span>
+                  {view === "grid" && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white rounded-full"></div>}
                 </button>
                 <button
                   onClick={() => setView("list")}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                  className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-sm transition-all relative group ${
                     view === "list"
-                      ? "bg-accent text-white shadow-md"
-                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+                      ? "bg-gradient-to-r from-accent to-green-600 text-white shadow-lg shadow-green-300 dark:shadow-green-900/50 scale-105"
+                      : "text-slate-700 dark:text-slate-300 hover:text-navy dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 hover:shadow-md"
                   }`}
                 >
-                  <List size={16} />
-                  List
+                  <List size={18} />
+                  <span className="font-semibold">List</span>
+                  {view === "list" && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white rounded-full"></div>}
                 </button>
                 <button
                   onClick={() => setView("calendar")}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                  className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-sm transition-all relative group ${
                     view === "calendar"
-                      ? "bg-accent text-white shadow-md"
-                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+                      ? "bg-gradient-to-r from-accent to-green-600 text-white shadow-lg shadow-green-300 dark:shadow-green-900/50 scale-105"
+                      : "text-slate-700 dark:text-slate-300 hover:text-navy dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 hover:shadow-md"
                   }`}
                 >
-                  <Calendar size={16} />
-                  📅 Calendar
+                  <Calendar size={18} />
+                  <span className="font-semibold">📅 Calendar</span>
+                  {view === "calendar" && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white rounded-full"></div>}
                 </button>
               </div>
             </div>
