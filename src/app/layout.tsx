@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     description: "Never miss a hackathon. Know what wins.",
     type: "website",
   },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

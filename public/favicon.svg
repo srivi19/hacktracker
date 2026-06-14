@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <!-- Background -->
+  <rect width="256" height="256" fill="#f8fafc" rx="56"/>
+
+  <!-- Trophy Shape -->
+  <g transform="translate(128, 128)">
+    <!-- Trophy cup -->
+    <path d="M -30 -20 L -25 -35 L 25 -35 L 30 -20 Z" fill="#16a34a" stroke="#059669" stroke-width="2"/>
+
+    <!-- Trophy handles -->
+    <path d="M -25 -20 Q -45 -20 -45 0" fill="none" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 25 -20 Q 45 -20 45 0" fill="none" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Trophy base stem -->
+    <rect x="-8" y="0" width="16" height="20" fill="#059669"/>
+
+    <!-- Trophy stand -->
+    <path d="M -25 20 L 25 20 L 20 35 L -20 35 Z" fill="#16a34a" stroke="#059669" stroke-width="2"/>
+
+    <!-- Lightning bolt inside trophy -->
+    <g transform="translate(-5, -15)">
+      <path d="M 0 -5 L 4 2 L 1 2 L 8 10 L -2 2 L 1 2 Z" fill="#fbbf24" stroke="none"/>
+    </g>
+  </g>
+</svg>
