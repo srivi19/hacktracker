@@ -30,7 +30,7 @@ export default function HomePage() {
 
             {/* Main Logo/Brand */}
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4 animate-fadeInUp" style={{ animationDelay: "0.1s" }}>
-              <span className="text-navy dark:text-white">HACK</span>
+              <span className="text-navy dark:text-white">HACK-</span>
               <span className="text-accent">TRACK</span>
               <span className="text-navy dark:text-white"> AI</span>
             </h1>
