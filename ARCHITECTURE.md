@@ -1,4 +1,4 @@
-# AIHackTracker — Architecture & Data Flow
+# HACK-TRACK AI — Architecture & Data Flow
 
 **Built with ❤️ by Vi (Srividya Narayanan) for Mind the Product Hackathon 2026**
 
@@ -52,7 +52,7 @@ graph LR
     style E1 fill:#8b5cf6
 ```
 
-AIHackTracker is a Next.js-based web application that aggregates hackathon opportunities from across the internet, provides AI-generated summaries, tracks deadlines, and supplies winning project intelligence via Novus.ai analytics.
+HACK-TRACK AI is a Next.js-based web application that aggregates hackathon opportunities from across the internet, provides AI-generated summaries, tracks deadlines, and supplies winning project intelligence via Novus.ai analytics.
 
 **Core Stack:**
 - **Frontend:** Next.js 14 + React 18 + TypeScript + Tailwind CSS
@@ -490,7 +490,7 @@ Deploy from GitHub → Railway automatically on push
 ## 📝 Built with ❤️
 
 **Author:** Vi (Srividya Narayanan)  
-**Project:** AIHackTracker for Mind the Product Hackathon 2026  
+**Project:** HACK-TRACK AI for Mind the Product Hackathon 2026  
 **Version:** 1.0 (Supabase + pg_cron + Novus Analytics + Dark Mode)  
 **Last Updated:** June 12, 2026  
 **Status:** 🟢 Production Ready (21+ hackathons live)

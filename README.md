@@ -1,4 +1,4 @@
-# AIHackTracker 🚀
+# HACK-TRACK AI 🚀
 
 > **The AI Hackathon Intelligence Platform** — Discover, track, and learn from the best AI hackathons happening now.
 > 
@@ -38,9 +38,9 @@ graph TB
 
 ---
 
-## What is AIHackTracker?
+## What is HACK-TRACK AI?
 
-AIHackTracker is a one-stop intelligence hub for AI hackathons. It aggregates opportunities, tracks deadlines, analyzes winning patterns, and provides live analytics to help you find and **win** your next hackathon.
+HACK-TRACK AI is a one-stop intelligence hub for AI hackathons. It aggregates opportunities, tracks deadlines, analyzes winning patterns, and provides live analytics to help you find and **win** your next hackathon.
 
 ### Key Features
 
