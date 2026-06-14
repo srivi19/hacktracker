@@ -215,30 +215,31 @@ export default function DashboardPage() {
         )}
 
         {/* Tabs - PROMINENT */}
-        <div className="mb-8">
-          <div className="flex flex-wrap items-center gap-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl p-2 border border-slate-200 dark:border-slate-700 transition-colors">
+        <div className="mb-10">
+          <div className="flex flex-wrap items-center gap-4 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-800/50 rounded-2xl p-4 border-2 border-slate-200 dark:border-slate-700 transition-colors shadow-lg">
             {(["hackathons", "winners", "insights", "analytics"] as const).map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`px-6 py-3 rounded-lg font-bold text-sm tracking-wide transition-all whitespace-nowrap ${
+                className={`px-8 py-4 rounded-xl font-bold text-base tracking-widest transition-all whitespace-nowrap relative group ${
                   tab === t
-                    ? "bg-accent text-white shadow-lg shadow-green-200 dark:shadow-green-900"
-                    : "text-slate-600 dark:text-slate-400 hover:text-navy dark:hover:text-slate-200 hover:bg-white dark:hover:bg-slate-700"
+                    ? "bg-gradient-to-r from-accent to-green-600 text-white shadow-xl shadow-green-300 dark:shadow-green-900/50 scale-105"
+                    : "text-slate-700 dark:text-slate-300 hover:text-navy dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 hover:shadow-md"
                 }`}
               >
                 {t === "hackathons" && (
-                  <span className="flex items-center gap-2">
-                    <Calendar size={16} />
+                  <span className="flex items-center gap-3">
+                    <Calendar size={20} />
                     <span>HACKATHONS</span>
-                    <span className="bg-slate-200 dark:bg-slate-600 px-2 py-0.5 rounded-full text-xs font-semibold">
+                    <span className="bg-slate-300 dark:bg-slate-600 px-3 py-1 rounded-full text-sm font-bold">
                       {hackathons.length}
                     </span>
                   </span>
                 )}
-                {t === "winners" && <span className="flex items-center gap-2"><span>🏆</span> <span>WINNERS</span></span>}
-                {t === "insights" && <span className="flex items-center gap-2"><Zap size={16} /> <span>AI INSIGHTS</span></span>}
-                {t === "analytics" && <span className="flex items-center gap-2"><Database size={16} /> <span>ANALYTICS</span></span>}
+                {t === "winners" && <span className="flex items-center gap-3"><span className="text-2xl">🏆</span> <span>WINNERS</span></span>}
+                {t === "insights" && <span className="flex items-center gap-3"><Zap size={20} /> <span>AI INSIGHTS</span></span>}
+                {t === "analytics" && <span className="flex items-center gap-3"><Database size={20} /> <span>ANALYTICS</span></span>}
+                {tab === t && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white rounded-full"></div>}
               </button>
             ))}
           </div>
