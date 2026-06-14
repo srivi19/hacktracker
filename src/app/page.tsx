@@ -28,10 +28,17 @@ export default function HomePage() {
               Real data from 21+ hackathons
             </div>
 
-            {/* Main Headline - Simple & Bold */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-navy dark:text-white tracking-tight leading-tight mb-6 animate-fadeInUp" style={{ animationDelay: "0.1s" }}>
-              Find Your Winning Hackathon
+            {/* Main Logo/Brand */}
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4 animate-fadeInUp" style={{ animationDelay: "0.1s" }}>
+              <span className="text-navy dark:text-white">HACK</span>
+              <span className="text-accent">TRACK</span>
+              <span className="text-navy dark:text-white"> AI</span>
             </h1>
+
+            {/* Tagline */}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy dark:text-white mb-6 animate-fadeInUp" style={{ animationDelay: "0.15s" }}>
+              Find Your Winning Hackathon
+            </h2>
 
             {/* Subheadline - Clear Value Prop */}
             <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed animate-fadeInUp" style={{ animationDelay: "0.2s" }}>
