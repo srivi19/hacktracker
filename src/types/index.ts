@@ -38,7 +38,7 @@ export interface FilterState {
   difficulty: string;
   prizeMin: number;
   status: string;
-  techTag: string;
+  techTags: string[]; // Multi-select tech tags
   teamSize: string; // "solo" | "team" | "all"
   format: string; // "online" | "in-person" | "hybrid" | "all"
 }

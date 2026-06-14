@@ -21,12 +21,12 @@ export default function SearchFilters({ filters, onChange, count, total }: Props
     filters.category !== "All" ||
     filters.difficulty !== "All" ||
     filters.status !== "All" ||
-    filters.techTag ||
+    filters.techTags.length > 0 ||
     filters.teamSize !== "all" ||
     filters.format !== "all";
 
   function reset() {
-    onChange({ search: "", category: "All", difficulty: "All", status: "All", techTag: "", teamSize: "all", format: "all" });
+    onChange({ search: "", category: "All", difficulty: "All", status: "All", techTags: [], teamSize: "all", format: "all" });
   }
 
   return (
@@ -122,21 +122,30 @@ export default function SearchFilters({ filters, onChange, count, total }: Props
         </select>
       </div>
 
-      {/* Tech tag pills */}
-      <div className="flex flex-wrap gap-1.5 mt-3">
-        {TECH_TAGS.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => onChange({ techTag: filters.techTag === tag ? "" : tag })}
-            className={`text-[10px] font-medium px-2.5 py-1 rounded-full border transition-colors ${
-              filters.techTag === tag
-                ? "bg-accent text-white border-accent"
-                : "bg-white text-slate-600 border-slate-200 hover:border-green-300"
-            }`}
-          >
-            {tag}
-          </button>
-        ))}
+      {/* Tech stack filter section */}
+      <div className="mt-5 pt-4 border-t border-slate-100">
+        <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Filter by Tech Stack (Multi-select)</p>
+        <div className="flex flex-wrap gap-2">
+          {TECH_TAGS.map((tag) => (
+            <button
+              key={tag}
+              onClick={() => {
+                const newTags = filters.techTags.includes(tag)
+                  ? filters.techTags.filter(t => t !== tag)
+                  : [...filters.techTags, tag];
+                onChange({ techTags: newTags });
+              }}
+              className={`text-[10px] font-semibold px-3 py-1.5 rounded-full border transition-colors ${
+                filters.techTags.includes(tag)
+                  ? "bg-accent text-white border-accent shadow-md"
+                  : "bg-white text-slate-600 border-slate-200 hover:border-green-300"
+              }`}
+              title={filters.techTags.includes(tag) ? "Click to deselect" : "Click to filter"}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

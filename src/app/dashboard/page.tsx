@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import HackathonCard from "@/components/HackathonCard";
 import SearchFilters from "@/components/SearchFilters";
 import WinnersSection from "@/components/WinnersSection";
+import AIInsightsSection from "@/components/AIInsightsSection";
 import NovusCarousel from "@/components/NovusCarousel";
 import CalendarView from "@/components/CalendarView";
 import { HACKATHONS, AI_INSIGHTS } from "@/lib/data";
@@ -17,7 +18,7 @@ const DEFAULT_FILTERS: FilterState = {
   difficulty: "All",
   prizeMin: 0,
   status: "All",
-  techTag: "",
+  techTags: [],
   teamSize: "all",
   format: "all",
 };
@@ -43,7 +44,12 @@ export default function DashboardPage() {
       const data = await res.json();
       if (data.hackathons?.length > 0) {
         setHackathons(data.hackathons);
-        setDataSource(data.source === "static" ? "static" : "live");
+        const isLive = data.source === "live" || data.source === "supabase";
+        setDataSource(isLive ? "live" : "static");
+        // Update sync timestamp when we get fresh data
+        if (isLive) {
+          setLastScraped(new Date().toISOString());
+        }
       }
     } catch {
       // Keep static data on error
@@ -116,7 +122,7 @@ export default function DashboardPage() {
       if (filters.category !== "All" && h.category !== filters.category) return false;
       if (filters.difficulty !== "All" && h.difficulty !== filters.difficulty) return false;
       if (filters.status !== "All" && h.status !== filters.status) return false;
-      if (filters.techTag && !h.tech_tags?.includes(filters.techTag)) return false;
+      if (filters.techTags.length > 0 && !filters.techTags.some(tag => h.tech_tags?.includes(tag))) return false;
 
       // Team size filter
       if (filters.teamSize === "solo" && !h.team_size.toLowerCase().includes("1")) return false;
@@ -140,8 +146,11 @@ export default function DashboardPage() {
     });
   }, [filters, hackathons]);
 
-  function formatLastScraped(ts: string | null): string {
-    if (!ts) return "Never";
+  function formatLastScraped(ts: string | null, dataSource: "static" | "live"): string {
+    if (dataSource === "static") {
+      return "Seed data (not synced)";
+    }
+    if (!ts) return "Just now";
     const diff = Date.now() - new Date(ts).getTime();
     const hours = Math.floor(diff / 3600000);
     if (hours < 1) return "Just now";
@@ -195,9 +204,9 @@ export default function DashboardPage() {
             <div className="flex items-center gap-2 text-[10px] text-slate-400">
               <Database size={10} />
               <span>
-                {dataSource === "live" ? "Live · Devpost" : "Seed data"} ·{" "}
+                {dataSource === "live" ? "Live · Supabase" : "Seed data"} ·{" "}
                 {hackathons.length} hackathons ·{" "}
-                Last synced: {formatLastScraped(lastScraped)}
+                Synced: {formatLastScraped(lastScraped, dataSource)}
               </span>
             </div>
           </div>
@@ -405,6 +414,9 @@ export default function DashboardPage() {
                 ))}
               </div>
             </div>
+
+            {/* Live Data Insights */}
+            <AIInsightsSection hackathons={hackathons} />
 
             {/* Header Section */}
             <div className="mb-10 bg-gradient-to-r from-green-50 dark:from-green-950/30 to-blue-50 dark:to-blue-950/30 rounded-2xl border-2 border-green-200 dark:border-green-800 p-8 transition-colors">

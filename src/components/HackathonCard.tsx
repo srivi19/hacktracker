@@ -1,5 +1,6 @@
 "use client";
-import { Calendar, Users, ExternalLink, Star, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, Users, ExternalLink, Star, Clock, Heart } from "lucide-react";
 import type { Hackathon } from "@/types";
 import { generateGoogleCalendarUrl, downloadICalEvent } from "@/lib/calendar-utils";
 
@@ -26,6 +27,8 @@ const STATUS_LABELS: Record<string, string> = {
 };
 
 export default function HackathonCard({ hackathon: h }: Props) {
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
   const daysLeft = getDaysLeft(h.deadline);
   const deadlineDate = new Date(h.deadline).toLocaleDateString("en-US", {
     month: "short",
@@ -33,9 +36,25 @@ export default function HackathonCard({ hackathon: h }: Props) {
     year: "numeric",
   });
 
+  // Load bookmark status from localStorage
+  useEffect(() => {
+    const bookmarked = localStorage.getItem(`bookmark-${h.id}`);
+    setIsBookmarked(bookmarked === "true");
+  }, [h.id]);
+
   const handleAddToCalendar = () => {
     const calendarUrl = generateGoogleCalendarUrl(h);
     window.open(calendarUrl, "_blank");
+  };
+
+  const handleBookmark = () => {
+    const newState = !isBookmarked;
+    setIsBookmarked(newState);
+    if (newState) {
+      localStorage.setItem(`bookmark-${h.id}`, "true");
+    } else {
+      localStorage.removeItem(`bookmark-${h.id}`);
+    }
   };
 
   return (
@@ -52,7 +71,16 @@ export default function HackathonCard({ hackathon: h }: Props) {
             </span>
           )}
         </div>
-        <span className="text-sm font-black text-accent ml-2 shrink-0">{h.prize_pool}</span>
+        <div className="flex items-center gap-3 ml-2 shrink-0">
+          <button
+            onClick={handleBookmark}
+            title={isBookmarked ? "Remove bookmark" : "Save hackathon"}
+            className="text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+          >
+            <Heart size={16} fill={isBookmarked ? "currentColor" : "none"} className={isBookmarked ? "text-red-500 dark:text-red-400" : ""} />
+          </button>
+          <span className="text-sm font-black text-accent">{h.prize_pool}</span>
+        </div>
       </div>
 
       {/* Title */}
