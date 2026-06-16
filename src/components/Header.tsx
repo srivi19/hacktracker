@@ -56,8 +56,8 @@ export default function Header() {
             </button>
           )}
 
-          {/* Tracked by Novus.AI */}
-          <div className="flex items-center gap-1.5 mr-1">
+          {/* Tracked by Novus.AI - Links to Analytics */}
+          <Link href="/dashboard?tab=novus" className="flex items-center gap-1.5 mr-1 hover:opacity-80 transition-opacity">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0" y="0" width="7" height="7" rx="1.5" fill="#f472b6"/>
               <rect x="9" y="0" width="7" height="7" rx="1.5" fill="#a78bfa"/>
@@ -65,8 +65,8 @@ export default function Header() {
               <rect x="9" y="9" width="7" height="7" rx="1.5" fill="#34d399"/>
             </svg>
             <span className="text-[9px] text-slate-400 dark:text-slate-500 uppercase tracking-widest hidden sm:inline">Tracked by</span>
-            <span className="text-[10px] font-bold border border-slate-300 dark:border-slate-600 rounded px-1.5 py-0.5 text-slate-600 dark:text-slate-400 tracking-wide hidden sm:inline">NOVUS.AI</span>
-          </div>
+            <span className="text-[10px] font-bold border border-slate-300 dark:border-slate-600 rounded px-1.5 py-0.5 text-slate-600 dark:text-slate-400 tracking-wide hidden sm:inline hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">NOVUS.AI</span>
+          </Link>
           <span className="chip hidden md:inline-flex">Product Innovation</span>
           <span className="chip hidden sm:inline-flex text-green-700 border-green-200 bg-green-50">
             Up to $2,000
