@@ -27,7 +27,7 @@ export default function DashboardPage() {
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
   const [view, setView] = useState<"grid" | "list" | "calendar">("grid");
   const [selectedHackathon, setSelectedHackathon] = useState<Hackathon | null>(null);
-  const [tab, setTab] = useState<"hackathons" | "winners" | "insights" | "analytics">("hackathons");
+  const [tab, setTab] = useState<"hackathons" | "winners" | "insights" | "analytics" | "novus">("hackathons");
 
   // Live data state
   const [hackathons, setHackathons] = useState<Hackathon[]>(HACKATHONS);
@@ -226,7 +226,7 @@ export default function DashboardPage() {
         {/* Tabs - PROMINENT */}
         <div className="mb-10">
           <div className="flex flex-wrap items-center gap-4 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-800/50 rounded-2xl p-4 border-2 border-slate-200 dark:border-slate-700 transition-colors shadow-lg">
-            {(["hackathons", "winners", "insights", "analytics"] as const).map((t) => (
+            {(["hackathons", "winners", "insights", "analytics", "novus"] as const).map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
@@ -248,6 +248,7 @@ export default function DashboardPage() {
                 {t === "winners" && <span className="flex items-center gap-3"><span className="text-2xl">🏆</span> <span>WINNERS</span></span>}
                 {t === "insights" && <span className="flex items-center gap-3"><Zap size={20} /> <span>AI INSIGHTS</span></span>}
                 {t === "analytics" && <span className="flex items-center gap-3"><Database size={20} /> <span>ANALYTICS</span></span>}
+                {t === "novus" && <span className="flex items-center gap-3"><span className="text-2xl">📊</span> <span>NOVUS IN ACTION</span></span>}
                 {tab === t && <div className="absolute bottom-0 left-0 right-0 h-1 bg-white rounded-full"></div>}
               </button>
             ))}
@@ -528,6 +529,23 @@ export default function DashboardPage() {
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-4">
                   Once you join, you will see live Novus analytics: user activity, engagement metrics, and product signals in real-time.
                 </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Novus Analytics In Action tab */}
+        {tab === "novus" && (
+          <div>
+            <div className="mb-10 bg-gradient-to-br from-purple-50 dark:from-purple-950/30 to-pink-50 dark:to-pink-950/30 rounded-2xl border-2 border-purple-200 dark:border-purple-800 p-10 shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                  <span className="text-2xl">📊</span>
+                </div>
+                <div>
+                  <h2 className="text-3xl font-black text-navy dark:text-white">Novus Analytics In Action</h2>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">Real-time tracking of user behavior and engagement patterns</p>
+                </div>
               </div>
             </div>
 

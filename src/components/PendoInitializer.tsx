@@ -2,6 +2,16 @@
 
 import Script from "next/script";
 
+function getOrCreateVisitorId(): string {
+  const key = 'aihacktracker_visitor_id';
+  let id = localStorage.getItem(key);
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem(key, id);
+  }
+  return id;
+}
+
 export default function PendoInitializer() {
   return (
     <Script
@@ -12,7 +22,7 @@ export default function PendoInitializer() {
         if (pendo) {
           pendo.initialize({
             visitor: {
-              id: typeof window !== 'undefined' ? window.location.hostname : 'unknown',
+              id: getOrCreateVisitorId(),
             },
             account: {
               id: 'aihacktracker-prod'
