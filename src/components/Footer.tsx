@@ -70,9 +70,9 @@ export default function Footer() {
         </p>
         <div className="flex items-center justify-center gap-2 mb-3">
           <span className="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">📊 Tracked by</span>
-          <span className="inline-block px-2 py-1 bg-blue-50 border border-blue-200 rounded text-[10px] font-bold text-blue-700">
+          <a href="/dashboard?tab=novus" className="inline-block px-2 py-1 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 border border-blue-200 dark:border-blue-700 rounded text-[10px] font-bold text-blue-700 dark:text-blue-300 transition-colors">
             NOVUS.AI
-          </span>
+          </a>
         </div>
         <div className="flex items-center justify-center gap-3 text-[9px] text-slate-500 flex-wrap">
           <a href="#about" className="hover:text-accent transition-colors group relative" title="Learn about AIHackTracker">
