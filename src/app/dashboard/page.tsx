@@ -225,12 +225,12 @@ export default function DashboardPage() {
 
         {/* Tabs - PROMINENT */}
         <div className="mb-10">
-          <div className="flex flex-wrap items-center gap-4 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-800/50 rounded-2xl p-4 border-2 border-slate-200 dark:border-slate-700 transition-colors shadow-lg">
+          <div className="flex items-center gap-3 overflow-x-auto bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-800/50 rounded-2xl p-4 border-2 border-slate-200 dark:border-slate-700 transition-colors shadow-lg">
             {(["hackathons", "winners", "insights", "analytics", "novus"] as const).map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`px-8 py-4 rounded-xl font-bold text-base tracking-widest transition-all whitespace-nowrap relative group ${
+                className={`px-6 py-3 rounded-xl font-bold text-sm tracking-widest transition-all whitespace-nowrap relative group flex-shrink-0 ${
                   tab === t
                     ? "bg-gradient-to-r from-accent to-green-600 text-white shadow-xl shadow-green-300 dark:shadow-green-900/50 scale-105"
                     : "text-slate-700 dark:text-slate-300 hover:text-navy dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 hover:shadow-md"
