@@ -61,7 +61,7 @@ HACK-TRACK AI is a Next.js-based web application that aggregates hackathon oppor
 - **AI Summaries:** Google Gemini 1.5 Flash API
 - **Analytics:** Novus.ai
 - **Hosting:** Railway
-- **Auto-refresh:** pg_cron (every 10 days)
+- **Auto-refresh:** pg_cron (every 3 days)
 
 ---
 
@@ -217,7 +217,7 @@ triggered_at      TIMESTAMP
 
 ## Auto-Refresh Mechanism (pg_cron)
 
-Every **10 days** at **2 AM UTC**, the `refresh_hackathons()` function runs automatically:
+Every **3 days** at **2 AM UTC**, the `refresh_hackathons()` function runs automatically:
 
 ```sql
 -- Updates hackathon statuses based on deadline
@@ -234,7 +234,7 @@ SET status = 'open'
 WHERE deadline > now() + interval '3 days';
 ```
 
-**Cron schedule:** `0 2 */10 * *` (every 10 days at 2 AM UTC)
+**Cron schedule:** `0 2 */3 * *` (every 3 days at 2 AM UTC)
 
 **Status flow:**
 ```
@@ -420,7 +420,7 @@ Deploy from GitHub → Railway automatically on push
 - External link broken → user can still see hackathon details
 
 **Data Freshness:**
-- pg_cron runs every 10 days (configurable)
+- pg_cron runs every 3 days (configurable)
 - Status updates happen automatically
 - No manual intervention required
 - If cron fails, next scheduled run will retry

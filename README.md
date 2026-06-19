@@ -9,7 +9,7 @@
 **Builder:** Vi (Srividya Narayanan) · [Contact](mailto:srividya.chandra@gmail.com)
 
 **📱 Connect & Explore:**
-- 🌐 **[Live App](https://hacktracker-production.up.railway.app/)** — 21+ AI hackathons
+- 🌐 **[Live App](https://hacktracker-production.up.railway.app/)** — 17 verified AI hackathons
 - 💬 **[Slack Community](https://join.slack.com/t/aihacktracker-33m8986/shared_invite/zt-40tfdsjk2-9FQcGdIA5GFn6mf_FHcPvg)** — Real-time analytics & judge updates
 - 📊 **[Analytics Dashboard](https://app.novus.ai/)** — Live tracking with Novus.ai
 - 🔗 **[GitHub Repo](https://github.com/srivi19/hacktracker)** — Source code & deployment
@@ -46,7 +46,7 @@ HACK-TRACK AI is a one-stop intelligence hub for AI hackathons. It aggregates op
 
 | Feature | Description | Impact |
 |---------|-------------|--------|
-| **🎯 Curated Directory** | 21+ current AI hackathons from Supabase | Never miss a deadline |
+| **🎯 Curated Directory** | 17 verified AI hackathons from Supabase | Never miss a deadline |
 | **📅 Calendar View** | Visualize all deadlines on an interactive calendar | Plan your schedule |
 | **🏆 Winning Intelligence** | Analysis of 50+ past winners and patterns | Learn what judges reward |
 | **💰 Prize Insights** | $200K+ total prize pool tracked | Maximize opportunities |
@@ -54,13 +54,13 @@ HACK-TRACK AI is a one-stop intelligence hub for AI hackathons. It aggregates op
 | **🌙 Dark Mode** | Fully styled night mode with toggle | Code-friendly theme |
 | **🗓️ Calendar Export** | Add deadlines to Google Calendar instantly | Never forget a date |
 | **⚡ Lightning Fast** | Next.js + Supabase + Live Deployment | Instant load times |
-| **♻️ Auto-Refresh** | pg_cron updates every 10 days | Always up-to-date |
+| **♻️ Auto-Refresh** | pg_cron updates every 3 days | Always up-to-date |
 
 ---
 
 ## Current Hackathons (June 2026)
 
-**21+ AI hackathons tracked** from top sponsors:
+**17 verified AI hackathons tracked** from top sponsors:
 
 | Hackathon | Deadline | Prize Pool | Status | Category |
 |-----------|----------|-----------|--------|----------|
@@ -178,7 +178,7 @@ React Components (Grid, List, Calendar)
 ```
 
 ### Key Features
-- **Auto-Refresh:** pg_cron runs every 10 days to update hackathon statuses
+- **Auto-Refresh:** pg_cron runs every 3 days to update hackathon statuses
 - **Resilient:** Falls back to static data if Supabase is unavailable
 - **Real-Time:** Immediate status updates (open → closing_soon → closed)
 - **Zero Cost:** Supabase free tier covers all usage
