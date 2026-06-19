@@ -17,16 +17,16 @@ export default function NovusCarousel({ screenshots }: Props) {
   const prev = () => setCurrent((current - 1 + screenshots.length) % screenshots.length);
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-6 mb-8">
+    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 mb-8">
       <div className="flex items-center gap-2 mb-4">
         <BarChart3 size={18} className="text-blue-600" />
-        <h2 className="text-lg font-bold text-navy">Novus Analytics In Action</h2>
-        <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-bold">LIVE TRACKING</span>
+        <h2 className="text-lg font-bold text-navy dark:text-white">Novus Analytics In Action</h2>
+        <span className="text-[10px] bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded font-bold">LIVE TRACKING</span>
       </div>
 
-      <div className="relative bg-slate-50 rounded-lg overflow-hidden">
+      <div className="relative bg-slate-50 dark:bg-slate-700 rounded-lg overflow-hidden">
         {/* Image display */}
-        <div className="aspect-video bg-slate-100 flex items-center justify-center">
+        <div className="aspect-video bg-slate-100 dark:bg-slate-600 flex items-center justify-center">
           <img
             src={screenshots[current]}
             alt={`Novus Analytics Screenshot ${current + 1}`}
@@ -68,7 +68,7 @@ export default function NovusCarousel({ screenshots }: Props) {
         )}
       </div>
 
-      <p className="text-xs text-slate-500 mt-3 text-center">
+      <p className="text-xs text-slate-500 dark:text-slate-400 mt-3 text-center">
         Real-time user behavior tracking powered by Novus.ai analytics
       </p>
     </div>
