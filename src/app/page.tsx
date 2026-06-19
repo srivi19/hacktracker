@@ -6,7 +6,7 @@ import { HACKATHONS } from "@/lib/data";
 import { Trophy, Zap, Bell, Search, Calendar, Users, ArrowRight, Play, CheckCircle2, Sparkles, Target, Rocket } from "lucide-react";
 
 const STATS = [
-  { label: "Active Hackathons", value: "21+" },
+  { label: "Active Hackathons", value: "17" },
   { label: "Prize Pool", value: "$2M+" },
   { label: "Winning Projects", value: "50+" },
   { label: "AI Summaries", value: "100%" },
@@ -69,7 +69,7 @@ export default function HomePage() {
             {/* Trust Signal */}
             <div className="flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400 animate-fadeInUp" style={{ animationDelay: "0.4s" }}>
               <span>✓ Data from Devpost, MLH, AngelList</span>
-              <span>✓ Updated live every 10 days</span>
+              <span>✓ Updated live every 3 days</span>
               <span>✓ 50+ winners analyzed</span>
             </div>
           </div>
